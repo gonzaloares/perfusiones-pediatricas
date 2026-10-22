@@ -1,41 +1,43 @@
-# Perfusiones pediátricas — Prototipo v0.4
+# Perfusiones pediátricas — Prototipo v0.5
 
-> **NO APTO PARA USO CLÍNICO.** La aplicación es una prueba matemática y un catálogo de **documentación por revisar**. No prescribe, no prepara, no recomienda concentraciones y no valida vías de administración. No introducir datos reales de pacientes.
+> **NO APTO PARA USO CLÍNICO.** Solo simulador matemático con datos ficticios y fuentes publicadas para revisión documental. No utilizar para prescribir, preparar, programar bombas o administrar medicación a pacientes.
 
-## Acceso
-GitHub Pages: https://gonzaloares.github.io/perfusiones-pediatricas/
+**Aplicación:** https://gonzaloares.github.io/perfusiones-pediatricas/
 
-## Contenido
-- Calculadora matemática directa e inversa basada en datos ficticios.
-- Biblioteca de **cinco fichas técnicas específicas**: adrenalina Basi, noradrenalina Basi, dopamina Grifols, dobutamina Hikma y milrinona Lorien.
-- Fuente primaria de cada monografía: enlace directo a **CIMA/AEMPS**.
-- Cada documento está marcado **PENDIENTE DE VALIDACIÓN** y tiene lista vacía de preparaciones aprobadas.
-- Notas sobre población pediátrica, forma comercial, diluyentes, compatibilidades, estabilidad y precauciones específicas.
-- Service worker con caché de los archivos para prueba sin conexión, después de la primera carga exitosa.
+## Capacidades
+- Cálculo directo e inverso de velocidades a partir de cifras ficticias introducidas por el usuario; no existe cálculo vinculado al selector farmacológico.
+- Biblioteca de cinco fármacos con fichas técnicas concretas de AEMPS: adrenalina, noradrenalina, dopamina, dobutamina, milrinona. **Ninguna concentración clínica está validada.**
+- Selector de bibliografía **Neonatología / Pediatría**, con concentraciones expresamente publicadas y enlazadas a la fuente original, sin seleccionar preparaciones ni trasladar cifras a la calculadora.
+- Rango **observado** en 9 UCIN españolas, identificado expresamente como observacional, no estándar ni recomendación.
+- Lista de ocho tareas formales de validación pendiente.
+- PWA estática con manifest, iconos PNG y servicio de caché.
 
-## Hallazgos que condicionan validación
-1. **Dopamina Grifols**: la ficha técnica indica que el uso pediátrico no está recomendado por falta de seguridad y eficacia establecidas para esta presentación.
-2. **Noradrenalina Basi**: distinguir mg de **base** y mg de **tartrato**.
-3. **Adrenalina Basi**: sus indicaciones y diluciones para inyección IV no autorizan por sí mismas una concentración de perfusión pediátrica.
-4. **Dobutamina Hikma**: la ficha técnica recoge poblaciones pediátricas y condiciones especiales para concentraciones superiores, lo cual **no sustituye** la validación de protocolos locales.
-5. **Milrinona Lorien**: destacar precauciones pediátricas/renales y compatibilidad de líneas.
+## Datasets versionados
 
-## Bloqueo clínico
-`biblioteca-farmacos.json` contiene `clinical_use_allowed: false`, `validation: "PENDIENTE"` y `preparations: []` para cada medicamento. La interfaz aplica un cierre por defecto si no se cumple este contrato. Esto **no** equivale a un mecanismo de seguridad certificado; una aplicación pública estática es modificable por usuarios técnicos.
+| Archivo | Contenido | Estado |
+|---|---|---|
+| `biblioteca-farmacos.json` | Ficha de cada presentación española | No validado |
+| `matriz-concentraciones-publicadas.json` | Concentraciones en consenso y estándares con población y fuente | Literatura, no validado |
+| `index.html` | Calculadora ficticia y vista documental | Prototipo |
+| `sw.js` | Caché offline | Prototipo |
 
-## Antes de cualquier uso asistencial
-- Validación formal y trazable por Farmacia Hospitalaria y Pediatría/Neonatología/UCIP.
-- Verificación de ficha técnica vigente y presentaciones disponibles en farmacia.
-- Revisión de concentraciones, diluyentes, compatibilidad en línea, estabilidad microbiológica, edad, peso y acceso vascular.
-- Límites de bomba, precisión, redondeo y tolerancias.
-- Suite de pruebas matemáticas con casos extremos y revisión independiente.
-- Análisis de riesgos, control de versiones y evaluación regulatoria aplicable.
+**Regla:** Los datasets llevan `clinical_use_allowed: false`. No crear preparaciones clínicas ni recomendaciones automáticas a partir de esta matriz.
 
-## Referencias AEMPS
-- Adrenalina Basi: https://cima.aemps.es/cima/dochtml/ft/89175/FT_89175.html
-- Noradrenalina Basi: https://cima.aemps.es/cima/dochtml/ft/90792/FT_90792.html
-- Dopamina Grifols: https://cima.aemps.es/cima/dochtml/ft/55454/FichaTecnica_55454.html
-- Dobutamina Hikma: https://cima.aemps.es/cima/dochtml/ft/85914/FT_85914.html
-- Milrinona Lorien: https://cima.aemps.es/cima/dochtml/ft/91153/FT_91153.html
+## Resumen de fuentes con concentraciones contrastadas
 
-Fuentes consultadas el **22 de octubre de 2026**. La descripción de una FT concreta no implica comercialización, disponibilidad hospitalaria ni autorización universal de otras presentaciones.
+1. **Consenso español (2024):** adrenalina pediatría 20, 40, 60, 100 µg/mL; neonatología 20, 40, 60 µg/mL. Las demás concentraciones del anexo suplementario siguen pendientes de lectura y contraste: https://pmc.ncbi.nlm.nih.gov/articles/PMC11042264/
+2. **ASHP Standardize 4 Safety (actualizado junio 2026), sin desglose neonatal específico para las filas recogidas:** epinefrina 10/20/40 µg/mL; noradrenalina 16/32/64 µg/mL; dopamina 0,8/1,6/3,2 mg/mL; dobutamina 1/2/4 mg/mL; milrinona 0,1/0,2 mg/mL: https://www.ashp.org/-/media/assets/pharmacy-practice/s4s/docs/Pediatric-Infusion-Standards.ashx
+3. **Observacional 9 UCIN españolas:** intervalos reportados por los centros; no han sido añadidos como concentraciones candidatas. https://pmc.ncbi.nlm.nih.gov/articles/PMC8717789/
+4. **RCPCH / NPPG 2024:** documento fuente a analizar detalladamente por bandas de peso y dispositivo antes de incorporar cifras a la matriz. https://www.rcpch.ac.uk/resources/standardising-intravenous-infusion-concentrations-neonates-children-uk-framework
+
+## Restricciones críticas
+- **Noradrenalina:** diferencia entre noradrenalina base y tartrato según presentación; confirmar declaración exacta de concentraciones de cualquier fuente.
+- **Dopamina Grifols:** la ficha española consultada no recomienda uso en niños debido a insuficiencia de datos.
+- **Neonatología:** no trasladar automáticamente concentraciones pediátricas generales; validar edad, peso y estabilidad, incluidas bandas inferiores a 2 kg.
+- **Vía y diluyente:** ni el consenso ni ASHP garantizan aptitud para una combinación específica de fabricante, formulación, concentración, diluyente, material, tipo de acceso y vida útil.
+- **Bomba:** no utilizar para programar equipos sin validación independiente.
+
+## Criterios de aprobación institucional pendientes
+Farmacia Hospitalaria, pediatras de Urgencias/Neonatología/UCIP, enfermería, ingeniería clínica y Seguridad del Paciente; actualización de fichas técnicas y productos vigentes; pruebas automáticas exhaustivas; análisis de riesgos; control de cambios; evaluación regulatoria para software sanitario.
+
+Revisión documental: 22 octubre 2026.
