@@ -8,12 +8,13 @@ const pharmacy = read('biblioteca-farmacos.json');
 const matrix = read('matriz-concentraciones-publicadas.json');
 const uk = read('marco-neonatal-bandas-nppg.json');
 const audit = read('auditoria-fuentes.json');
+const presentations = read('matriz-presentaciones-aemps.json');
 const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const sw = fs.readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
 const ids = ['adrenalina','noradrenalina','dopamina','dobutamina','milrinona'];
 
 test('ningún conjunto documental autoriza uso clínico', () => {
-  for (const data of [pharmacy,matrix,uk,audit]) assert.equal(data.clinical_use_allowed,false);
+  for (const data of [pharmacy,matrix,uk,audit,presentations]) assert.equal(data.clinical_use_allowed,false);
   assert.ok(pharmacy.drugs.every(d => d.validation === 'PENDIENTE' && Array.isArray(d.preparations) && d.preparations.length===0));
   assert.deepEqual(uk.local_validation.approved_preparations, []);
   assert.deepEqual(uk.local_validation.approved_concentrations, []);
@@ -23,18 +24,19 @@ test('ningún conjunto documental autoriza uso clínico', () => {
 test('cinco sustancias: identidad y unicidad coherentes', () => {
   for (const data of [pharmacy,matrix,uk]) assert.deepEqual(data.drugs.map(d=>d.id),ids);
   assert.deepEqual(audit.coverage.map(d=>d.drug_id),ids);
+  assert.deepEqual(presentations.products.map(d=>d.id),ids);
 });
 
-test('valores españoles: solo adrenalina verificada en tabla principal', () => {
-  const verified = audit.coverage.filter(x => x.spanish_consensus_status==='VERIFICADO_TABLA_PRINCIPAL');
-  assert.deepEqual(verified.map(x=>x.drug_id),['adrenalina']);
-  assert.deepEqual(verified[0].population_rows.find(x=>x.population==='neonatologia').values,[20,40,60]);
-  assert.deepEqual(verified[0].population_rows.find(x=>x.population==='pediatria').values,[20,40,60,100]);
-  for (const row of audit.coverage.filter(x=>x.drug_id!=='adrenalina')) {
-    assert.equal(row.spanish_consensus_status,'PENDIENTE_SUPLEMENTO');
-    assert.deepEqual(row.population_rows,[]);
+test('consenso español: ninguno de los cinco fármacos tiene valores verificados del suplemento', () => {
+  for(const x of audit.coverage){
+    assert.equal(x.spanish_consensus_status,'PENDIENTE_SUPLEMENTO');
+    assert.deepEqual(x.population_rows,[]);
   }
+  assert.equal(matrix.spanish_consensus_status,'PENDIENTE_SUPLEMENTO_TODOS_CINCO');
+  for(const d of matrix.drugs) assert.ok(!d.candidate_sets.some(x=>x.source_id==='ES_DELPHI_2024'));
   assert.equal(audit.spanish_consensus.inaccessible_attachment.access,'NO_RECUPERADO_EN_LA_REVISION');
+  assert.ok(audit.verification_correction && audit.verification_correction.resolved_clinically===false);
+  assert.ok(matrix.disputed_correction && matrix.disputed_correction.action.includes('Retiradas'));
 });
 
 test('el nombre de fichero del suplemento pendiente se conserva',()=>{
@@ -70,11 +72,13 @@ test('las opciones regionales tienen equivalencia aritmética correcta',()=>{
  }
 });
 
-test('JavaScript de la interfaz sintácticamente válido y visible v0.7',()=>{
+test('JavaScript de la interfaz sintácticamente válido y visible v0.8',()=>{
  const script=html.match(/<script>([\s\S]*?)<\/script>/);
  assert.ok(script);
  assert.doesNotThrow(()=>new vm.Script(script[1]));
- assert.match(html,/v0\.7/);
+ assert.match(html,/v0\.8/);
+ assert.match(html,/id="productDetails"/);
+ assert.match(html,/function isProductFTSafe/);
  assert.match(html,/id="auditDetails"/);
  assert.match(html,/NO APTO PARA USO CLÍNICO/);
  assert.match(html,/function isAuditSafe/);
@@ -111,7 +115,37 @@ test('ningún panel bibliográfico alimenta por sí mismo el campo de concentrac
  assert.match(html,/No equivalen a protocolos españoles aprobados/);
 });
 
+test('cinco presentaciones AEMPS con datos farmacotécnicos bloqueados',()=>{
+ assert.equal(presentations.status,'FICHAS_TECNICAS_DOCUMENTALES_NO_VALIDADAS');
+ assert.equal(presentations.administration_enabled,false);
+ assert.deepEqual(presentations.ready_to_use_protocols,[]);
+ for(const p of presentations.products){
+  assert.equal(p.validation.preparation_authorized,false);
+  assert.equal(p.validation.clinical_selection,false);
+  assert.equal(p.validation.infusion_recommendation,false);
+  assert.equal(p.stability.usable_hours_in_app,null);
+  assert.ok(p.source.url.startsWith('https://cima.aemps.es/'));
+  assert.ok(p.listed_diluents.length>0);
+ }
+});
+
+test('no equiparar tiempo fisicoquímico a validez microbiológica ni compatibilidad en Y',()=>{
+ assert.equal(presentations.products.find(d=>d.id==='adrenalina').stability.physicochemical_hours,null);
+ assert.equal(presentations.products.find(d=>d.id==='noradrenalina').stability.physicochemical_hours,48);
+ assert.equal(presentations.products.find(d=>d.id==='dobutamina').stability.physicochemical_hours,24);
+ assert.equal(presentations.products.find(d=>d.id==='milrinona').stability.physicochemical_hours,24);
+ assert.ok(presentations.source_caution.includes('Estabilidad fisicoquímica'));
+ assert.ok(presentations.source_caution.includes('compatibilidad'));
+ const nor=presentations.products.find(d=>d.id==='noradrenalina');
+ assert.ok(nor.stock.expression.includes('BASE')&&nor.stock.expression.includes('TARTRATO'));
+ assert.equal(nor.listed_diluents.some(d=>d.code==='NACL_0_9'),false);
+ const dopamine=presentations.products.find(d=>d.id==='dopamina');
+ assert.equal(dopamine.validation.status,'PRESENTACION_NO_RECOMENDADA_PEDIATRIA');
+ const epi=presentations.products.find(d=>d.id==='adrenalina');
+ assert.equal(epi.validation.status,'REFERENCIA_NO_PERFUSION_CONTINUA');
+});
+
 test('service worker incorpora auditoría y versión',()=>{
- assert.match(sw,/perfusiones-simulador-v07/);
- for(const item of ['biblioteca-farmacos.json','matriz-concentraciones-publicadas.json','marco-neonatal-bandas-nppg.json','auditoria-fuentes.json']) assert.ok(sw.includes(item),item);
+ assert.match(sw,/perfusiones-simulador-v08/);
+ for(const item of ['biblioteca-farmacos.json','matriz-concentraciones-publicadas.json','marco-neonatal-bandas-nppg.json','auditoria-fuentes.json','matriz-presentaciones-aemps.json']) assert.ok(sw.includes(item),item);
 });
