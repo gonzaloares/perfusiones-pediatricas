@@ -1,0 +1,397 @@
+{
+  "schema_version": "1.0",
+  "version": "0.8.0",
+  "checked_at": "2026-10-22",
+  "status": "FICHAS_TECNICAS_DOCUMENTALES_NO_VALIDADAS",
+  "clinical_use_allowed": false,
+  "scope": "Información de presentaciones específicas españolas (CIMA/AEMPS), sin confirmar existencias hospitalarias ni uso pediátrico para cada presentación.",
+  "source_caution": "Diluyente enumerado en una FT no demuestra compatibilidad para una concentración estándar determinada, contenedor/material, estabilidad prolongada ni administración simultánea en Y. Estabilidad fisicoquímica ≠ plazo microbiológico de uso.",
+  "administration_enabled": false,
+  "ready_to_use_protocols": [],
+  "products": [
+    {
+      "id": "adrenalina",
+      "product": "Adrenalina Basi 1 mg/ml solución inyectable",
+      "stock": {
+        "value": 1,
+        "unit": "mg/mL",
+        "expression": "epinefrina (adrenalina) en forma de tartrato"
+      },
+      "formulation": {
+        "container": "ampolla de vidrio ámbar",
+        "volume_ml": 1,
+        "amount_mg": 1
+      },
+      "listed_diluents": [
+        {
+          "code": "NACL_0_9",
+          "name": "Cloruro sódico 0,9%",
+          "section": "6.6",
+          "scope": "Dilución para administración intravenosa descrita en ficha, NO validación de perfusión continua"
+        },
+        {
+          "code": "GLUCOSA_5",
+          "name": "Glucosa 5%",
+          "section": "6.6",
+          "scope": "Dilución para administración intravenosa, no perfusión continua"
+        },
+        {
+          "code": "GLUCOSA_5_NACL_0_9",
+          "name": "Glucosa 5% + NaCl 0,9%",
+          "section": "6.6",
+          "scope": "Dilución para administración intravenosa, no perfusión continua"
+        }
+      ],
+      "stability": {
+        "physicochemical_hours": null,
+        "physicochemical_condition": "No se declara plazo posdilución de almacenamiento para perfusión",
+        "microbiological": "Uso inmediato después de apertura y después de dilución, según FT 6.3",
+        "usable_hours_in_app": null
+      },
+      "vascular_access": {
+        "route": "IV solo diluido para las indicaciones descritas de inyección; no hay validación de vía central/periférica para perfusión continua",
+        "peripheral_suitability": "NO_DETERMINADA",
+        "central_required": "NO_DETERMINADO",
+        "extravasation": "Precaución, consultar protocolo local"
+      },
+      "incompatibility": [
+        "FT 6.2: no mezclar con otros medicamentos distintos de lo indicado en 6.6; no se ha evaluado compatibilidad en Y."
+      ],
+      "pediatric_scope": "Indicación en FT: anafilaxia y reanimación cardiopulmonar.",
+      "source": {
+        "provider": "AEMPS/CIMA",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/89175/FT_89175.html",
+        "review": "07/2023",
+        "sections": [
+          "2",
+          "4.1",
+          "4.2",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      },
+      "local_availability": {
+        "in_stock": "NO_CONFIRMADO",
+        "source": "Inventario de farmacia pendiente"
+      },
+      "review_notes": "La ficha describe anafilaxia y reanimación; no autoriza inferir pautas de perfusión continua. No generar instrucciones de mezcla.",
+      "validation": {
+        "status": "REFERENCIA_NO_PERFUSION_CONTINUA",
+        "clinical_selection": false,
+        "preparation_authorized": false,
+        "infusion_recommendation": false,
+        "ready_to_use": false
+      }
+    },
+    {
+      "id": "noradrenalina",
+      "product": "Noradrenalina Basi 0,5 mg/ml concentrado para solución para perfusión",
+      "stock": {
+        "value": 0.5,
+        "unit": "mg/mL",
+        "expression": "noradrenalina BASE; equivale a 1 mg/mL de TARTRATO"
+      },
+      "formulation": {
+        "container": "ampolla de vidrio",
+        "volume_ml_options": [
+          5,
+          10
+        ],
+        "amount_base_mg_options": [
+          2.5,
+          5
+        ]
+      },
+      "listed_diluents": [
+        {
+          "code": "GLUCOSA_5",
+          "name": "Glucosa 5%",
+          "section": "6.6",
+          "scope": "Concentrado para perfusión tras dilución"
+        },
+        {
+          "code": "GLUCOSA_5_NACL_0_9",
+          "name": "Glucosa 5% + NaCl 0,9%",
+          "section": "6.6",
+          "scope": "Concentrado para perfusión tras dilución"
+        }
+      ],
+      "stability": {
+        "physicochemical_hours": 48,
+        "physicochemical_condition": "25 °C, según FT 6.3; no implica tiempo de uso microbiológico",
+        "microbiological": "Uso inmediato; otros plazos requieren condiciones asépticas validadas",
+        "usable_hours_in_app": null
+      },
+      "vascular_access": {
+        "route": "IV diluida a caudal controlado; FT 6.6 aconseja venas de extremidades superiores y previene estasis/extravasación",
+        "peripheral_suitability": "NO_DETERMINADA_POR_CONCENTRACION",
+        "central_required": "NO_DETERMINADO_POR_CONCENTRACION",
+        "extravasation": "Puede causar necrosis tisular local; revisión de protocolo de extravasación obligatoria"
+      },
+      "incompatibility": [
+        "Incompatible con álcali, agentes oxidantes, barbitúricos, bicarbonato y varios otros; posible incompatibilidad con insulina (FT 6.2).",
+        "No dar por probada compatibilidad en Y."
+      ],
+      "pediatric_scope": "Incluye neonatos, lactantes y niños en FT 4.1; FT 4.2 advierte que algunos subgrupos requieren diluciones distintas.",
+      "source": {
+        "provider": "AEMPS/CIMA",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/90792/FT_90792.html",
+        "sections": [
+          "2",
+          "4.1",
+          "4.2",
+          "4.4",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      },
+      "local_availability": {
+        "in_stock": "NO_CONFIRMADO",
+        "source": "Inventario de farmacia pendiente"
+      },
+      "review_notes": "ALERTA CRÍTICA: el valor de la sal tartrato es el doble del correspondiente a la base en ESTA presentación. No trasladar a otros envases o productos sin comprobar la FT.",
+      "validation": {
+        "status": "REFERENCIA_PERFUSION_PENDIENTE",
+        "clinical_selection": false,
+        "preparation_authorized": false,
+        "infusion_recommendation": false,
+        "ready_to_use": false
+      }
+    },
+    {
+      "id": "dopamina",
+      "product": "Dopamina Grifols 200 mg solución inyectable",
+      "stock": {
+        "value": 40,
+        "unit": "mg/mL",
+        "expression": "dopamina HIDROCLORURO"
+      },
+      "formulation": {
+        "container": "ampolla de vidrio",
+        "volume_ml": 5,
+        "amount_mg": 200
+      },
+      "listed_diluents": [
+        {
+          "code": "NACL_0_9",
+          "name": "NaCl 0,9%",
+          "section": "6.6",
+          "scope": "Diluciones FT de esta presentación"
+        },
+        {
+          "code": "GLUCOSA_5",
+          "name": "Glucosa 5%",
+          "section": "6.6",
+          "scope": "Diluciones FT"
+        },
+        {
+          "code": "GLUCOSA_5_NACL_0_9",
+          "name": "Glucosa 5% + NaCl 0,9%",
+          "section": "6.6",
+          "scope": "Diluciones FT"
+        },
+        {
+          "code": "GLUCOSA_5_NACL_0_45",
+          "name": "Glucosa 5% + NaCl 0,45%",
+          "section": "6.6",
+          "scope": "Diluciones FT"
+        },
+        {
+          "code": "RINGER_LACTATO",
+          "name": "Ringer lactato",
+          "section": "6.6",
+          "scope": "Diluciones FT"
+        }
+      ],
+      "stability": {
+        "physicochemical_hours": 24,
+        "physicochemical_condition": "Estabilidad a temperatura ambiente al menos 24 h tras dilución según FT 6.6; preparación extemporánea",
+        "microbiological": "Tras apertura uso inmediato; dilución extemporánea",
+        "usable_hours_in_app": null
+      },
+      "vascular_access": {
+        "route": "Perfusión IV diluida preferentemente en vena de gran calibre según FT 4.2",
+        "peripheral_suitability": "NO_DETERMINADA_PEDIATRIA",
+        "central_required": "NO_DETERMINADO_PEDIATRIA",
+        "extravasation": "Vigilar extravasación y riesgo tisular; protocolo local"
+      },
+      "incompatibility": [
+        "Inactivación con bicarbonato y soluciones alcalinas; incompatibilidades descritas con furosemida, tiopental, oxidantes, sales férricas y varios otros medicamentos (FT 6.2).",
+        "Compatibilidad Y no validada por esta app."
+      ],
+      "pediatric_scope": "FT 4.2: no recomendado en población pediátrica para esta presentación.",
+      "source": {
+        "provider": "AEMPS/CIMA",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/55454/FichaTecnica_55454.html",
+        "review": "12/2012",
+        "sections": [
+          "2",
+          "4.2",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      },
+      "local_availability": {
+        "in_stock": "NO_CONFIRMADO",
+        "source": "Inventario de farmacia pendiente"
+      },
+      "review_notes": "La FT Grifols 4.2 dice que seguridad/eficacia no establecidas en niños y que no se recomienda esta presentación pediátrica. Las diluciones de adultos de la FT no autorizan uso en neonatos.",
+      "validation": {
+        "status": "PRESENTACION_NO_RECOMENDADA_PEDIATRIA",
+        "clinical_selection": false,
+        "preparation_authorized": false,
+        "infusion_recommendation": false,
+        "ready_to_use": false
+      }
+    },
+    {
+      "id": "dobutamina",
+      "product": "Dobutamina Hikma 12,5 mg/ml concentrado para solución para perfusión",
+      "stock": {
+        "value": 12.5,
+        "unit": "mg/mL",
+        "expression": "dobutamina BASE; formulada como hidrocloruro"
+      },
+      "formulation": {
+        "container": "vial",
+        "volume_ml": 20,
+        "amount_mg": 250
+      },
+      "listed_diluents": [
+        {
+          "code": "GLUCOSA_5",
+          "name": "Glucosa 5%",
+          "section": "4.2 / 6.6",
+          "scope": "Pediatría explícita en FT 4.2"
+        },
+        {
+          "code": "NACL_0_9",
+          "name": "NaCl 0,9%",
+          "section": "4.2 / 6.6",
+          "scope": "Pediatría explícita en FT 4.2"
+        }
+      ],
+      "stability": {
+        "physicochemical_hours": 24,
+        "physicochemical_condition": "25 °C según FT 6.3",
+        "microbiological": "Uso inmediato salvo preparación aséptica controlada y validada",
+        "usable_hours_in_app": null
+      },
+      "vascular_access": {
+        "route": "IV en perfusión. FT 4.2: las soluciones de mayor concentración solamente por catéter central",
+        "peripheral_suitability": "CONDICIONADO_NO_APROBADO",
+        "central_required": "SOLO_EN_CONCENTRACIONES_MAYORES_SEGUN_FT",
+        "extravasation": "Protocolo local pendiente"
+      },
+      "incompatibility": [
+        "Incompatible con bicarbonato y soluciones alcalinas fuertes (FT 4.2 / 6.2).",
+        "FT 6.2 desaconseja mezclar con otros fármacos en la misma solución."
+      ],
+      "pediatric_scope": "FT 4.1 incluye recién nacidos a 18 años para soporte inotrópico en situaciones definidas.",
+      "source": {
+        "provider": "AEMPS/CIMA",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/85914/FT_85914.html",
+        "review": "10/2025",
+        "sections": [
+          "2",
+          "4.1",
+          "4.2",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      },
+      "local_availability": {
+        "in_stock": "NO_CONFIRMADO",
+        "source": "Inventario de farmacia pendiente"
+      },
+      "review_notes": "La FT propone para pediatría 0,5–1 mg/mL, y hasta 5 mg/mL con restricción hídrica y vía central para concentraciones mayores; estos valores no se convierten en opciones aprobadas.",
+      "validation": {
+        "status": "REFERENCIA_PERFUSION_PENDIENTE",
+        "clinical_selection": false,
+        "preparation_authorized": false,
+        "infusion_recommendation": false,
+        "ready_to_use": false
+      }
+    },
+    {
+      "id": "milrinona",
+      "product": "Milrinona Lorien 1 mg/ml solución inyectable y para perfusión",
+      "stock": {
+        "value": 1,
+        "unit": "mg/mL",
+        "expression": "milrinona"
+      },
+      "formulation": {
+        "container": "ampolla de vidrio",
+        "volume_ml": 10,
+        "amount_mg": 10
+      },
+      "listed_diluents": [
+        {
+          "code": "NACL_0_45",
+          "name": "NaCl 0,45%",
+          "section": "4.2 / 6.6",
+          "scope": "Disolvente indicado en FT"
+        },
+        {
+          "code": "NACL_0_9",
+          "name": "NaCl 0,9%",
+          "section": "4.2 / 6.6",
+          "scope": "Disolvente indicado en FT"
+        },
+        {
+          "code": "GLUCOSA_5",
+          "name": "Glucosa 5%",
+          "section": "4.2 / 6.6",
+          "scope": "Disolvente indicado en FT"
+        }
+      ],
+      "stability": {
+        "physicochemical_hours": 24,
+        "physicochemical_condition": "Menos de 25 °C, FT 6.3",
+        "microbiological": "Uso inmediato salvo dilución que excluya riesgo microbiológico; controles de Farmacia pendientes",
+        "usable_hours_in_app": null
+      },
+      "vascular_access": {
+        "route": "Vía IV: no se ha validado una norma de acceso periférico/central por concentración en esta app",
+        "peripheral_suitability": "NO_DETERMINADA",
+        "central_required": "NO_DETERMINADO",
+        "extravasation": "Pendiente de protocolo local"
+      },
+      "incompatibility": [
+        "No diluir con bicarbonato sódico (FT 6.2).",
+        "No coadministrar por misma línea con furosemida o bumetanida por precipitación (FT 4.5 y 6.2)."
+      ],
+      "pediatric_scope": "FT 4.1 uso pediátrico a corto plazo; 4.2 cita estudios en niños de 28 días a 11 años y precauciones en neonatos prematuros.",
+      "source": {
+        "provider": "AEMPS/CIMA",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/91153/FT_91153.html",
+        "review": "04/2026",
+        "sections": [
+          "2",
+          "4.1",
+          "4.2",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      },
+      "local_availability": {
+        "in_stock": "NO_CONFIRMADO",
+        "source": "Inventario de farmacia pendiente"
+      },
+      "review_notes": "Precaución en prematuros, ductus arterioso y función renal. La ficha Lorien afirma falta de datos para recomendar su uso en pediatría con insuficiencia renal.",
+      "validation": {
+        "status": "REFERENCIA_PERFUSION_PENDIENTE",
+        "clinical_selection": false,
+        "preparation_authorized": false,
+        "infusion_recommendation": false,
+        "ready_to_use": false
+      }
+    }
+  ]
+}
