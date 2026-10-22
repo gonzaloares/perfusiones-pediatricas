@@ -1,9 +1,19 @@
 {
-  "version": "0.3.0",
+  "schema_version": "1.0",
+  "version": "0.4.0",
   "updated": "2026-10-22",
-  "status": "BORRADOR_NO_VALIDADO",
+  "status": "INVESTIGACION_DOCUMENTAL_NO_VALIDADA",
   "clinical_use_allowed": false,
-  "source_policy": "No usar como instrucciones de preparación. La biblioteca no contiene concentraciones aprobadas.",
+  "unit_note": "Concentración del envase original ≠ concentración de perfusión. Las cifras citadas en ficha técnica no son preparaciones aprobadas por esta app.",
+  "source_policy": "Solo ficha técnica de presentaciones específicas CIMA/AEMPS. No extrapolar a otros fabricantes. No usar como prescripción, preparación, compatibilidad Y-site ni administración. Confirmar última revisión de FT.",
+  "review_requirements": [
+    "Farmacia Hospitalaria",
+    "Pediatría/Neonatología/UCIP",
+    "Compatibilidad y estabilidad por combinación específica",
+    "Vía periférica/central, edad y concentración",
+    "Disponibilidad comercial y concentración expresada como base o sal",
+    "Verificación en bombas y test de cálculo"
+  ],
   "drugs": [
     {
       "id": "adrenalina",
@@ -11,10 +21,29 @@
       "category": "Vasoactivo",
       "validation": "PENDIENTE",
       "preparations": [],
-      "source_candidates": [
-        "Consenso español de estandarización de perfusiones pediátricas y neonatales",
-        "AEMPS CIMA"
-      ]
+      "product": {
+        "name": "Adrenalina Basi solución inyectable",
+        "stock_concentration": "1 mg/ml",
+        "package": "Ampolla de 1 ml",
+        "availability": "NO_VERIFICADA"
+      },
+      "pediatric_status": "FT contempla anafilaxia y reanimación pediátrica; no valida aquí una pauta de perfusión continua.",
+      "diluents_in_specific_label": "La FT contempla NaCl 0,9%, glucosa 5% o glucosa 5% en NaCl 0,9% para la dilución IV descrita; no extrapolar a un protocolo de perfusión.",
+      "vascular_access_documentation": "La FT prohíbe administrar por vía IV la solución de 1 mg/ml sin diluir.",
+      "incompatibilities_documented": "No mezclar con otros medicamentos fuera de los indicados en la sección 6.6.",
+      "stability_documented": "Tras dilución: uso inmediato según esta ficha técnica.",
+      "critical_note": "La indicación en FT para anafilaxia/RCP no equivale a una concentración pediátrica estándar de perfusión.",
+      "published_preparations_not_approved": [],
+      "source": {
+        "title": "AEMPS · Adrenalina Basi 1 mg/ml",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/89175/FT_89175.html",
+        "sections": [
+          "2",
+          "4.2",
+          "6.3",
+          "6.6"
+        ]
+      }
     },
     {
       "id": "noradrenalina",
@@ -22,10 +51,31 @@
       "category": "Vasoactivo",
       "validation": "PENDIENTE",
       "preparations": [],
-      "source_candidates": [
-        "Consenso español de estandarización de perfusiones pediátricas y neonatales",
-        "AEMPS CIMA"
-      ]
+      "product": {
+        "name": "Noradrenalina Basi concentrado",
+        "stock_concentration": "0,5 mg/ml de NORADRENALINA BASE (equivale a 1 mg/ml de tartrato)",
+        "package": "Ampollas de 5 o 10 ml",
+        "availability": "NO_VERIFICADA"
+      },
+      "pediatric_status": "FT incluye adultos, neonatos, lactantes y niños para hipotensión aguda. Existen necesidades de concentración distintas entre subgrupos.",
+      "diluents_in_specific_label": "Según esta FT: glucosa 5% o NaCl 0,9% con glucosa 5%; no asumir que NaCl 0,9% solo está validado para esta presentación.",
+      "vascular_access_documentation": "Vía IV previa dilución, con bomba o equipo de infusión controlada. La FT no constituye aquí una autorización de acceso periférico por concentración.",
+      "incompatibilities_documented": "Incompatibilidad con sustancias alcalinas/bicarbonato, oxidantes y algunos fármacos; consultar sección 6.2.",
+      "stability_documented": "Estabilidad fisicoquímica 48 h a 25 °C; desde el punto de vista microbiológico, uso inmediato salvo proceso aséptico validado.",
+      "critical_note": "ALTO RIESGO: distinguir concentración de base frente a tartrato. Un error de factor dos en la interpretación podría causar sobredosificación.",
+      "published_preparations_not_approved": [],
+      "source": {
+        "title": "AEMPS · Noradrenalina Basi 0,5 mg/ml",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/90792/FT_90792.html",
+        "sections": [
+          "2",
+          "4.1",
+          "4.2",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      }
     },
     {
       "id": "dopamina",
@@ -33,10 +83,30 @@
       "category": "Inotrópico",
       "validation": "PENDIENTE",
       "preparations": [],
-      "source_candidates": [
-        "ASHP Standardize 4 Safety",
-        "AEMPS CIMA"
-      ]
+      "product": {
+        "name": "Dopamina Grifols solución inyectable",
+        "stock_concentration": "40 mg/ml de dopamina hidrocloruro",
+        "package": "Ampolla 5 ml (200 mg)",
+        "availability": "NO_VERIFICADA"
+      },
+      "pediatric_status": "ATENCIÓN: esta ficha técnica indica que seguridad y eficacia no están establecidas en niños y NO recomienda esta presentación para población pediátrica.",
+      "diluents_in_specific_label": "La FT menciona NaCl 0,9%, glucosa 5% y otras soluciones en sección 6.6; no extrapolar a recomendaciones pediátricas.",
+      "vascular_access_documentation": "Perfusión IV diluida, preferentemente vena de gran calibre; riesgo de extravasación.",
+      "incompatibilities_documented": "Incompatible con soluciones alcalinas, incluidos bicarbonato sódico, y otras sustancias; consultar sección 6.2.",
+      "stability_documented": "Tras apertura: uso inmediato. No asignar vida útil a una preparación pediátrica no validada.",
+      "critical_note": "No confundir uso descrito en literatura clínica con una indicación pediátrica autorizada para Dopamina Grifols.",
+      "published_preparations_not_approved": [],
+      "source": {
+        "title": "AEMPS · Dopamina Grifols 200 mg",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/55454/FichaTecnica_55454.html",
+        "sections": [
+          "2",
+          "4.2",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      }
     },
     {
       "id": "dobutamina",
@@ -44,10 +114,33 @@
       "category": "Inotrópico",
       "validation": "PENDIENTE",
       "preparations": [],
-      "source_candidates": [
-        "ASHP Standardize 4 Safety",
-        "AEMPS CIMA"
-      ]
+      "product": {
+        "name": "Dobutamina Hikma concentrado para perfusión",
+        "stock_concentration": "12,5 mg/ml",
+        "package": "Vial 20 ml (250 mg)",
+        "availability": "NO_VERIFICADA"
+      },
+      "pediatric_status": "FT incluye desde recién nacidos hasta 18 años para apoyo inotrópico en situaciones definidas.",
+      "diluents_in_specific_label": "Según FT, en pediatría: glucosa 5% o NaCl 0,9%.",
+      "vascular_access_documentation": "FT: las soluciones de concentración superior deben administrarse solo por catéter venoso central; la concentración definitiva requiere protocolo y validación.",
+      "incompatibilities_documented": "Incompatible con bicarbonato y otras soluciones muy alcalinas.",
+      "stability_documented": "Estabilidad fisicoquímica tras dilución 24 h a 25 °C; criterio microbiológico: uso inmediato salvo preparación aséptica validada.",
+      "critical_note": "La FT describe concentraciones pediátricas, pero esta app NO ha adoptado ninguna como estándar. Revisar siempre la población y restricción hídrica.",
+      "published_preparations_not_approved": [
+        "FT: 0,5–1 mg/ml en pediatría; máximo 5 mg/ml bajo restricción de líquidos. Dato documental, no receta ni selección automática."
+      ],
+      "source": {
+        "title": "AEMPS · Dobutamina Hikma 12,5 mg/ml",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/85914/FT_85914.html",
+        "sections": [
+          "2",
+          "4.1",
+          "4.2",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      }
     },
     {
       "id": "milrinona",
@@ -55,10 +148,31 @@
       "category": "Inodilatador",
       "validation": "PENDIENTE",
       "preparations": [],
-      "source_candidates": [
-        "ASHP Standardize 4 Safety",
-        "AEMPS CIMA"
-      ]
+      "product": {
+        "name": "Milrinona Lorien solución inyectable y para perfusión",
+        "stock_concentration": "1 mg/ml",
+        "package": "Ampolla 10 ml",
+        "availability": "NO_VERIFICADA"
+      },
+      "pediatric_status": "FT trata uso pediátrico en condiciones específicas; advierte de ausencia de datos para recomendar su uso en insuficiencia renal pediátrica y de menor aclaramiento en prematuros.",
+      "diluents_in_specific_label": "Según FT: NaCl 0,45%, NaCl 0,9% o glucosa 5%.",
+      "vascular_access_documentation": "Vía intravenosa; no se ha validado aquí una regla de vía central o periférica según concentración.",
+      "incompatibilities_documented": "No diluir con bicarbonato. No administrar en la misma línea con furosemida o bumetanida según la FT (precipitación).",
+      "stability_documented": "Estabilidad fisicoquímica tras dilución 24 h por debajo de 25 °C; uso inmediato desde perspectiva microbiológica salvo condiciones que eviten contaminación.",
+      "critical_note": "Especial atención a función renal, edad gestacional y riesgo de ductus persistente; no extrapolar datos de 28 días–11 años a prematuros.",
+      "published_preparations_not_approved": [],
+      "source": {
+        "title": "AEMPS · Milrinona Lorien 1 mg/ml",
+        "url": "https://cima.aemps.es/cima/dochtml/ft/91153/FT_91153.html",
+        "sections": [
+          "2",
+          "4.1",
+          "4.2",
+          "6.2",
+          "6.3",
+          "6.6"
+        ]
+      }
     }
   ]
 }
