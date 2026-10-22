@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "version": "0.7.0",
+  "checked_at": "2026-10-22",
+  "clinical_use_allowed": false,
+  "status": "AUDITORIA_DE_FUENTES_NO_VALIDADA",
+  "purpose": "Auditoría de trazabilidad y riesgos por fármaco; no se ofrecen datos para calcular preparaciones.",
+  "spanish_consensus": {
+    "publication": {
+      "title": "Standardisation of intravenous infusion therapy for paediatrics: big challenges for the little patients",
+      "journal": "European Journal of Hospital Pharmacy, 2024;31:274-280 (publicación inicial electrónica diciembre de 2022)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11042264/",
+      "doi": "10.1136/ejhpharm-2022-003316"
+    },
+    "methodology": "Consenso Delphi de dos rondas con paneles de pediatría y neonatología; umbral de consenso ≥70%.",
+    "sample": "43 profesionales de 15 hospitales en pediatría y 34 profesionales de 13 hospitales en neonatología.",
+    "outcomes": "44 medicamentos de perfusión continua en pediatría (92 concentraciones) y 38 en neonatología (74 concentraciones).",
+    "limitation": "Los autores indican que la propuesta no ha sido validada en la práctica asistencial. No sustituye protocolos locales ni validación farmacéutica.",
+    "available_table": "Tabla 2 del artículo completo en PMC",
+    "inaccessible_attachment": {
+      "filename": "ejhpharm-2022-003316supp001.pdf",
+      "location": "Associated Data / Supplementary Materials del artículo de PMC",
+      "access": "NO_RECUPERADO_EN_LA_REVISION",
+      "note": "Archivo suplementario citado en la publicación; no se han extraído ni verificado sus cifras para noradrenalina, dopamina, dobutamina ni milrinona. No inferirlas a partir de ASHP, NPPG ni observaciones en UCIN."
+    }
+  },
+  "high_priority_alerts": [
+    {
+      "id": "AEMPS_NORADRENALINA_2022",
+      "drug_id": "noradrenalina",
+      "source": "Agencia Española de Medicamentos y Productos Sanitarios (AEMPS)",
+      "publication_date": "2022-08-09",
+      "source_reference": "MUH 10/2022",
+      "url": "https://www.aemps.gob.es/informa/notasinformativas/medicamentosusohumano-3/informacion-relevante-sobre-los-medicamentos-que-contienen-noradrenalina-norepinefrina/",
+      "title": "Riesgo de confundir la expresión noradrenalina base vs. sal bitartrato",
+      "verified_statement": "La AEMPS informó que los nombres de B. Braun, Normon y Norages cambiaron su forma de expresar la concentración de sal a base, sin cambio en composición. Durante transición podían coexistir envases con distinto nombre; duplicar dosis por confusión sería peligroso.",
+      "affected_brands_2022": [
+        "Noradrenalina B. Braun",
+        "Noradrenalina Normon",
+        "Norages"
+      ],
+      "examples_of_label_equivalence": [
+        {
+          "base_mg_per_ml": 0.5,
+          "bitartrate_mg_per_ml": 1,
+          "brands": [
+            "B. Braun",
+            "Normon"
+          ]
+        },
+        {
+          "base_mg_per_ml": 1,
+          "bitartrate_mg_per_ml": 2,
+          "brands": [
+            "Norages"
+          ]
+        }
+      ],
+      "interpretation": "Ejemplos de equivalencia de rotulado comunicados en 2022; NO son factores automáticos aplicables a cualquier fármaco, país, lote, etiqueta o concentración. Revisar FT vigente.",
+      "alert_level": "ALTA",
+      "clinical_rule": "NO CALCULAR desde concentraciones expresadas en sal sin conversión, validación y unidad inequívoca por presentación."
+    },
+    {
+      "id": "AEMPS_DOPAMINA_GRIFOLS",
+      "drug_id": "dopamina",
+      "source": "AEMPS/CIMA · ficha técnica Dopamina Grifols 200 mg",
+      "url": "https://cima.aemps.es/cima/dochtml/ft/55454/FichaTecnica_55454.html",
+      "section": "4.2 - Población pediátrica",
+      "title": "La ficha técnica de la presentación Grifols no recomienda uso pediátrico",
+      "verified_statement": "Seguridad y eficacia de Dopamina Grifols 200 mg no establecidas en niños. La FT indica que no se recomienda para esta población.",
+      "interpretation": "Los estándares de concentraciones de otros países no sustituyen las condiciones regulatorias de esta presentación concreta.",
+      "alert_level": "ALTA",
+      "clinical_rule": "NO INFERIR indicación pediátrica de la disponibilidad de concentraciones internacionales."
+    }
+  ],
+  "coverage": [
+    {
+      "drug_id": "adrenalina",
+      "spanish_consensus_status": "VERIFICADO_TABLA_PRINCIPAL",
+      "population_rows": [
+        {
+          "population": "pediatria",
+          "values": [
+            20,
+            40,
+            60,
+            100
+          ],
+          "unit": "µg/mL"
+        },
+        {
+          "population": "neonatologia",
+          "values": [
+            20,
+            40,
+            60
+          ],
+          "unit": "µg/mL"
+        }
+      ],
+      "source_locator": "Tabla 2, artículo principal, filas Adrenalin bitartrate",
+      "open_work": "Comprobar formulación española y expresión base/bitartrato; no trasladar concentraciones a receta."
+    },
+    {
+      "drug_id": "noradrenalina",
+      "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
+      "population_rows": [],
+      "source_locator": "Tabla suplementaria 1, PDF citado pero no recuperado",
+      "open_work": "Extraer filas neonatología y pediatría de PDF original; priorizar revisión AEMPS MUH 10/2022 y expresión base/sal."
+    },
+    {
+      "drug_id": "dopamina",
+      "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
+      "population_rows": [],
+      "source_locator": "Tabla suplementaria 1, PDF citado pero no recuperado",
+      "open_work": "Contrastar cifras españolas originales con estándares externos y resolver FT Grifols para uso pediátrico."
+    },
+    {
+      "drug_id": "dobutamina",
+      "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
+      "population_rows": [],
+      "source_locator": "Tabla suplementaria 1, PDF citado pero no recuperado",
+      "open_work": "Extraer concentraciones españolas exactas por población; no inferirlas a partir de NPPG/ASHP."
+    },
+    {
+      "drug_id": "milrinona",
+      "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
+      "population_rows": [],
+      "source_locator": "Tabla suplementaria 1, PDF citado pero no recuperado",
+      "open_work": "Extraer concentraciones españolas exactas; revisar uso en prematuros y ausencia de fila NPPG <2 kg."
+    }
+  ],
+  "regulatory_warning": "Una fuente publicada que no haya sido validada no es un protocolo de preparación ni una aprobación del uso pediátrico. No se han habilitado concentraciones clínicas.",
+  "pending_source_access": "Para cerrar la investigación del consenso español es necesario consultar el PDF suplementario ejhpharm-2022-003316supp001.pdf; la ausencia de acceso queda visible como PENDIENTE, no como ausencia de consenso."
+}
