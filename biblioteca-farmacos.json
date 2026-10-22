@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
-  "version": "0.4.0",
+  "version": "0.8.0",
   "updated": "2026-10-22",
   "status": "INVESTIGACION_DOCUMENTAL_NO_VALIDADA",
   "clinical_use_allowed": false,
   "unit_note": "Concentración del envase original ≠ concentración de perfusión. Las cifras citadas en ficha técnica no son preparaciones aprobadas por esta app.",
-  "source_policy": "Solo ficha técnica de presentaciones específicas CIMA/AEMPS. No extrapolar a otros fabricantes. No usar como prescripción, preparación, compatibilidad Y-site ni administración. Confirmar última revisión de FT.",
+  "source_policy": "Fichas AEMPS de presentaciones concretas: inventario no verificado. Ver matriz-presentaciones-aemps.json para diluyentes, estabilidad físico-química frente a microbiológica, y restricciones de vía. No deducir compatibilidad en Y ni protocolo asistencial.",
   "review_requirements": [
     "Farmacia Hospitalaria",
     "Pediatría/Neonatología/UCIP",
@@ -32,7 +32,7 @@
       "vascular_access_documentation": "La FT prohíbe administrar por vía IV la solución de 1 mg/ml sin diluir.",
       "incompatibilities_documented": "No mezclar con otros medicamentos fuera de los indicados en la sección 6.6.",
       "stability_documented": "Tras dilución: uso inmediato según esta ficha técnica.",
-      "critical_note": "La indicación en FT para anafilaxia/RCP no equivale a una concentración pediátrica estándar de perfusión.",
+      "critical_note": "FT Basi orientada a anafilaxia/RCP, no establece un protocolo de perfusión continua; los datos del consenso español antes atribuidos a tabla 2 han sido retirados hasta cotejar suplemento.",
       "published_preparations_not_approved": [],
       "source": {
         "title": "AEMPS · Adrenalina Basi 1 mg/ml",
@@ -93,7 +93,7 @@
       "diluents_in_specific_label": "La FT menciona NaCl 0,9%, glucosa 5% y otras soluciones en sección 6.6; no extrapolar a recomendaciones pediátricas.",
       "vascular_access_documentation": "Perfusión IV diluida, preferentemente vena de gran calibre; riesgo de extravasación.",
       "incompatibilities_documented": "Incompatible con soluciones alcalinas, incluidos bicarbonato sódico, y otras sustancias; consultar sección 6.2.",
-      "stability_documented": "Tras apertura: uso inmediato. No asignar vida útil a una preparación pediátrica no validada.",
+      "stability_documented": "FT 6.6: estabilidad a temperatura ambiente al menos 24 h tras dilución, pero recomienda preparación extemporánea; tras apertura, uso inmediato. No se asigna plazo de uso pediátrico.",
       "critical_note": "No confundir uso descrito en literatura clínica con una indicación pediátrica autorizada para Dopamina Grifols.",
       "published_preparations_not_approved": [],
       "source": {
@@ -158,7 +158,7 @@
       "diluents_in_specific_label": "Según FT: NaCl 0,45%, NaCl 0,9% o glucosa 5%.",
       "vascular_access_documentation": "Vía intravenosa; no se ha validado aquí una regla de vía central o periférica según concentración.",
       "incompatibilities_documented": "No diluir con bicarbonato. No administrar en la misma línea con furosemida o bumetanida según la FT (precipitación).",
-      "stability_documented": "Estabilidad fisicoquímica tras dilución 24 h por debajo de 25 °C; uso inmediato desde perspectiva microbiológica salvo condiciones que eviten contaminación.",
+      "stability_documented": "FT 6.3: estabilidad fisicoquímica 24 h a menos de 25 °C; aspecto microbiológico: uso inmediato salvo preparación/dilución que excluya contaminación.",
       "critical_note": "Especial atención a función renal, edad gestacional y riesgo de ductus persistente; no extrapolar datos de 28 días–11 años a prematuros.",
       "published_preparations_not_approved": [],
       "source": {
