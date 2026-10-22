@@ -1,0 +1,64 @@
+{
+  "version": "0.3.0",
+  "updated": "2026-10-22",
+  "status": "BORRADOR_NO_VALIDADO",
+  "clinical_use_allowed": false,
+  "source_policy": "No usar como instrucciones de preparación. La biblioteca no contiene concentraciones aprobadas.",
+  "drugs": [
+    {
+      "id": "adrenalina",
+      "name": "Adrenalina (epinefrina)",
+      "category": "Vasoactivo",
+      "validation": "PENDIENTE",
+      "preparations": [],
+      "source_candidates": [
+        "Consenso español de estandarización de perfusiones pediátricas y neonatales",
+        "AEMPS CIMA"
+      ]
+    },
+    {
+      "id": "noradrenalina",
+      "name": "Noradrenalina (norepinefrina)",
+      "category": "Vasoactivo",
+      "validation": "PENDIENTE",
+      "preparations": [],
+      "source_candidates": [
+        "Consenso español de estandarización de perfusiones pediátricas y neonatales",
+        "AEMPS CIMA"
+      ]
+    },
+    {
+      "id": "dopamina",
+      "name": "Dopamina",
+      "category": "Inotrópico",
+      "validation": "PENDIENTE",
+      "preparations": [],
+      "source_candidates": [
+        "ASHP Standardize 4 Safety",
+        "AEMPS CIMA"
+      ]
+    },
+    {
+      "id": "dobutamina",
+      "name": "Dobutamina",
+      "category": "Inotrópico",
+      "validation": "PENDIENTE",
+      "preparations": [],
+      "source_candidates": [
+        "ASHP Standardize 4 Safety",
+        "AEMPS CIMA"
+      ]
+    },
+    {
+      "id": "milrinona",
+      "name": "Milrinona",
+      "category": "Inodilatador",
+      "validation": "PENDIENTE",
+      "preparations": [],
+      "source_candidates": [
+        "ASHP Standardize 4 Safety",
+        "AEMPS CIMA"
+      ]
+    }
+  ]
+}
