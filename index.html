@@ -58,7 +58,7 @@ fetch('./biblioteca-farmacos.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw E
   drugData=lib.drugs;
   $('drug').replaceChildren();
   drugData.forEach(d=>{const opt=document.createElement('option');opt.value=d.id;opt.textContent=d.name;$('drug').append(opt)});
-  renderDrug();
+  renderDrug();renderEvidence();
 }).catch(()=>{$('drugInfo').textContent='Biblioteca no disponible o no validada: uso clínico bloqueado. Solo cálculo con datos ficticios.';$('drugFacts').textContent='Sin ficha documental disponible.'});
 let research=null;
 function researchIsSafe(m){
