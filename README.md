@@ -1,30 +1,29 @@
-# Perfusiones Pediátricas — v0.7
+# Perfusiones Pediátricas — v0.8
 
 [**Abrir simulador documental**](https://gonzaloares.github.io/perfusiones-pediatricas/)
 
 > ⚠️ **NO APTO PARA USO CLÍNICO.** No utilizar para prescripción, preparación, programación de bomba ni administración de medicamentos a pacientes. Herramienta de investigación y simulación matemática con parámetros ficticios.
 
-## Novedad v0.7: auditoría de fuentes españolas y alertas oficiales
+## Novedad v0.8 — Verificación farmacotécnica y rectificación documentada
 
-La aplicación conserva **modo de simulación exclusivamente**. Se ha añadido el archivo `auditoria-fuentes.json`, que distingue:
+**CORRECCIÓN DE LA VERSIÓN ANTERIOR:** la publicación principal de Taladriz-Sender y colaboradores (Eur J Hosp Pharm, 2024) muestra en la tabla 2 un extracto de la lista y remite el resto al fichero `ejhpharm-2022-003316supp001.pdf`, que no hemos logrado recuperar por la vía disponible. En v0.7 se adjudicaron erróneamente concentraciones de adrenalina a la tabla principal. **Se han retirado esas concentraciones atribuidas al consenso español de la matriz activa y ahora los cinco fármacos aparecen PENDIENTES del anexo.** Esto no significa que sus concentraciones sean incorrectas; significa que no se ha verificado la fuente exacta. No rellenarlas desde ASHP, NPPG o rangos observacionales.
 
-- **Verificado en tabla principal del artículo español de Taladriz-Sender et al. (2024):** solo adrenalina. Pediatría: 20, 40, 60 y 100 µg/mL; neonatología: 20, 40 y 60 µg/mL. Son cifras documentales sin validación local.
-- **Pendiente de comprobación de tabla suplementaria española:** noradrenalina, dopamina, dobutamina y milrinona. El artículo remite a `ejhpharm-2022-003316supp001.pdf` (3,2 MB), pero el archivo no se pudo recuperar durante esta revisión. No deducir valores españoles desde tablas británicas o estadounidenses.
-- **Advertencia AEMPS MUH 10/2022 sobre noradrenalina:** los cambios de expresión de nombre **bitartrato → base** de presentaciones B. Braun, Normon y Norages no cambiaron la composición. Confundir etiquetas puede producir errores de dosis; comprobar siempre fabricante, presentación y unidad declarada. Fuente: https://www.aemps.gob.es/informa/notasinformativas/medicamentosusohumano-3/informacion-relevante-sobre-los-medicamentos-que-contienen-noradrenalina-norepinefrina/
-- **Dopamina Grifols:** la ficha técnica del producto declara que la seguridad y eficacia en población pediátrica no están establecidas y no recomienda su uso en niños: https://cima.aemps.es/cima/dochtml/ft/55454/FichaTecnica_55454.html
-- **Límite metodológico del consenso:** los autores indican expresamente que sus concentraciones no han sido validadas en la práctica asistencial. El artículo de 2024, disponible en https://pmc.ncbi.nlm.nih.gov/articles/PMC11042264/, deriva de una publicación electrónica de diciembre de 2022.
+- **Nuevo fichero `matriz-presentaciones-aemps.json`:** 5 presentaciones comerciales específicas, concentración del envase original, diluyentes enumerados en su ficha CIMA, condiciones fisicoquímicas y microbiológicas diferenciadas, observaciones sobre vía IV y advertencias de incompatibilidad.
+- **Dos alertas bloqueantes:** Noradrenalina (base vs. tartrato, AEMPS MUH 10/2022) y Dopamina Grifols (población pediátrica no recomendada en la ficha de esa presentación).
+- **Adrenalina Basi**: la ficha contempla anafilaxia y reanimación; su dilución intravenosa descrita **no** se transforma en protocolo de perfusión continua.
+- **Vía periférica/central:** ninguna preparación ha sido clasificada como apta por la app; la ficha de Dobutamina Hikma establece que las concentraciones superiores descritas se infunden solo por catéter central, lo cual no define la concentración pediátrica aprobada por el hospital.
+- **Estabilidad:** por ejemplo, 48 h de estabilidad fisicoquímica de Noradrenalina Basi a 25 °C **no equivalen** a poder conservar una preparación durante 48 h bajo cualquier condición microbiológica o ambiental. Ningún plazo de uso se calcula ni se prescribe en la app.
+- **Diluentes:** confirmar siempre la presentación; Noradrenalina Basi 0,5 mg/mL describe glucosa 5% o glucosa 5% + NaCl 0,9%, **no NaCl 0,9% solo** para su dilución.
+- **Compatibilidad en Y:** no se deduce de que dos diluyentes estén citados en la ficha técnica; queda SIN VALIDAR.
 
-El panel **«Estado del consenso español y alertas AEMPS»** se despliega dentro de la ficha de cada fármaco. Los archivos bibliográficos no tienen conexión de lectura con los campos del motor matemático. La vista móvil coloca ahora la calculadora ficticia antes de la biblioteca documental.
+El panel **«Presentación española: diluyentes, estabilidad y vía»** se encuentra dentro de la ficha de cada medicamento. La calculadora ficticia sigue independiente de las concentraciones documentales.
 
 ### Pruebas automáticas
 
-El archivo `tests/check-data.test.mjs` comprueba, entre otros puntos, la coherencia entre los cinco medicamentos, la presencia de alertas oficiales, las filas nacionales/regionales, el estado pendiente del anexo español, las conversiones y el bloqueo de preparaciones clínicas. Ejecutar en entorno Node 22+:
+- [Suite de tests Node](tests/check-data.test.mjs): comprueba la retirada de atribuciones no verificadas, las cinco fichas españolas, el bloqueo de preparación, límites de fuentes y cálculo matemático directo/inverso.
+- [Workflow GitHub Actions](.github/workflows/verificar.yml): ejecuta `node --test tests/check-data.test.mjs` con Node.js 22 en cada push y pull request.
 
-```bash
-node --test tests/check-data.test.mjs
-```
-
-GitHub Actions dispone de `.github/workflows/verificar.yml` para ejecutar estas pruebas cuando se suben cambios. **Pasar estas comprobaciones no supone validación clínica o regulatoria.** La publicación en GitHub Pages permanece configurada desde la rama `main`, no desde el workflow de pruebas.
+La comprobación automática es una herramienta de desarrollo, **NO validación asistencial, farmacológica ni regulatoria**. Solo podrá avanzarse con aprobación y trazabilidad de Farmacia Hospitalaria y servicios clínicos.
 
 ## Base documental v0.6: neonatología y peso
 
@@ -45,6 +44,7 @@ Se ha añadido una consulta **documental** por bandas de peso de la publicación
 | `matriz-concentraciones-publicadas.json` | Consenso español, ASHP y observaciones de 9 UCIN | Bloqueado |
 | `marco-neonatal-bandas-nppg.json` | **18 filas NPPG por peso** y **18 opciones EoE** para 5 fármacos | Bloqueado |
 | `auditoria-fuentes.json` | Estado comprobación del consenso español y alertas AEMPS | Bloqueado |
+| `matriz-presentaciones-aemps.json` | Diluyentes, vía y estabilidad por producto comercial español | Bloqueado |
 | `index.html` | Selector documental y simulador matemático independiente | Solo demostración |
 | `sw.js` | Caché de consulta offline (con carga previa correcta) | No implica uso clínico |
 
@@ -63,7 +63,7 @@ Los conjuntos documentales contienen `clinical_use_allowed: false` y **cero prep
 
 ## Pendientes priorizados
 
-1. Obtener y comprobar las tablas suplementarias completas del consenso español para noradrenalina, dopamina, dobutamina y milrinona.
+1. Recuperar y cotejar directamente el PDF suplementario original del consenso español para **los cinco fármacos**; sin ello ninguna concentración española se clasificará como verificada.
 2. Resolver explícitamente el caso de **milrinona en RN <2 kg** sin suponer que una opción de la guía regional equivale a una recomendación nacional.
 3. Evaluar diferencias NPPG/EoE y adaptar únicamente los estándares aprobados por Farmacia Hospitalaria y Neonatología.
 4. Verificar concentraciones base/sal, formulaciones comercializadas, diluyentes, acceso vascular, compatibilidades y estabilidad para cada preparación.
