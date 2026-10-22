@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "checked_at": "2026-10-22",
   "clinical_use_allowed": false,
   "status": "AUDITORIA_DE_FUENTES_NO_VALIDADA",
@@ -16,12 +16,12 @@
     "sample": "43 profesionales de 15 hospitales en pediatría y 34 profesionales de 13 hospitales en neonatología.",
     "outcomes": "44 medicamentos de perfusión continua en pediatría (92 concentraciones) y 38 en neonatología (74 concentraciones).",
     "limitation": "Los autores indican que la propuesta no ha sido validada en la práctica asistencial. No sustituye protocolos locales ni validación farmacéutica.",
-    "available_table": "Tabla 2 del artículo completo en PMC",
+    "available_table": "Tabla 2 del texto principal es un extracto que continúa en material suplementario. Las concentraciones de los cinco vasoactivos NO se han contrastado de forma directa con el PDF suplementario.",
     "inaccessible_attachment": {
       "filename": "ejhpharm-2022-003316supp001.pdf",
       "location": "Associated Data / Supplementary Materials del artículo de PMC",
       "access": "NO_RECUPERADO_EN_LA_REVISION",
-      "note": "Archivo suplementario citado en la publicación; no se han extraído ni verificado sus cifras para noradrenalina, dopamina, dobutamina ni milrinona. No inferirlas a partir de ASHP, NPPG ni observaciones en UCIN."
+      "note": "Anexo original citado, no recuperado ni cotejado. Las concentraciones antes adjudicadas a adrenalina como Tabla 2 no se observaron en el extracto accesible, por lo que también se retiran de evidencia verificada."
     }
   },
   "high_priority_alerts": [
@@ -76,60 +76,47 @@
   "coverage": [
     {
       "drug_id": "adrenalina",
-      "spanish_consensus_status": "VERIFICADO_TABLA_PRINCIPAL",
-      "population_rows": [
-        {
-          "population": "pediatria",
-          "values": [
-            20,
-            40,
-            60,
-            100
-          ],
-          "unit": "µg/mL"
-        },
-        {
-          "population": "neonatologia",
-          "values": [
-            20,
-            40,
-            60
-          ],
-          "unit": "µg/mL"
-        }
-      ],
-      "source_locator": "Tabla 2, artículo principal, filas Adrenalin bitartrate",
-      "open_work": "Comprobar formulación española y expresión base/bitartrato; no trasladar concentraciones a receta."
+      "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
+      "population_rows": [],
+      "source_locator": "Archivo ejhpharm-2022-003316supp001.pdf citado por tabla 2 (continuación), no recuperado",
+      "open_work": "Recuperar y contrastar directamente filas adrenalina para pediatría y neonatología; no inferir desde ASHP, NPPG o UCIN."
     },
     {
       "drug_id": "noradrenalina",
       "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
       "population_rows": [],
-      "source_locator": "Tabla suplementaria 1, PDF citado pero no recuperado",
-      "open_work": "Extraer filas neonatología y pediatría de PDF original; priorizar revisión AEMPS MUH 10/2022 y expresión base/sal."
+      "source_locator": "Archivo ejhpharm-2022-003316supp001.pdf citado por tabla 2 (continuación), no recuperado",
+      "open_work": "Recuperar y contrastar directamente filas noradrenalina para pediatría y neonatología; no inferir desde ASHP, NPPG o UCIN."
     },
     {
       "drug_id": "dopamina",
       "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
       "population_rows": [],
-      "source_locator": "Tabla suplementaria 1, PDF citado pero no recuperado",
-      "open_work": "Contrastar cifras españolas originales con estándares externos y resolver FT Grifols para uso pediátrico."
+      "source_locator": "Archivo ejhpharm-2022-003316supp001.pdf citado por tabla 2 (continuación), no recuperado",
+      "open_work": "Recuperar y contrastar directamente filas dopamina para pediatría y neonatología; no inferir desde ASHP, NPPG o UCIN."
     },
     {
       "drug_id": "dobutamina",
       "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
       "population_rows": [],
-      "source_locator": "Tabla suplementaria 1, PDF citado pero no recuperado",
-      "open_work": "Extraer concentraciones españolas exactas por población; no inferirlas a partir de NPPG/ASHP."
+      "source_locator": "Archivo ejhpharm-2022-003316supp001.pdf citado por tabla 2 (continuación), no recuperado",
+      "open_work": "Recuperar y contrastar directamente filas dobutamina para pediatría y neonatología; no inferir desde ASHP, NPPG o UCIN."
     },
     {
       "drug_id": "milrinona",
       "spanish_consensus_status": "PENDIENTE_SUPLEMENTO",
       "population_rows": [],
-      "source_locator": "Tabla suplementaria 1, PDF citado pero no recuperado",
-      "open_work": "Extraer concentraciones españolas exactas; revisar uso en prematuros y ausencia de fila NPPG <2 kg."
+      "source_locator": "Archivo ejhpharm-2022-003316supp001.pdf citado por tabla 2 (continuación), no recuperado",
+      "open_work": "Recuperar y contrastar directamente filas milrinona para pediatría y neonatología; no inferir desde ASHP, NPPG o UCIN."
     }
   ],
   "regulatory_warning": "Una fuente publicada que no haya sido validada no es un protocolo de preparación ni una aprobación del uso pediátrico. No se han habilitado concentraciones clínicas.",
-  "pending_source_access": "Para cerrar la investigación del consenso español es necesario consultar el PDF suplementario ejhpharm-2022-003316supp001.pdf; la ausencia de acceso queda visible como PENDIENTE, no como ausencia de consenso."
+  "pending_source_access": "Para cerrar la investigación del consenso español es necesario consultar el PDF suplementario ejhpharm-2022-003316supp001.pdf; la ausencia de acceso queda visible como PENDIENTE, no como ausencia de consenso.",
+  "verification_correction": {
+    "date": "2026-10-22",
+    "replaces": "v0.7",
+    "issue": "Se habían clasificado como verificadas en la tabla principal concentraciones de adrenalina que no se pudieron confirmar allí.",
+    "action": "Downgrade a pendiente de suplemento, datos retirados de la matriz activa y de la vista española; fuente original por cotejar.",
+    "resolved_clinically": false
+  }
 }
