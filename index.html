@@ -1,8 +1,17 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123047"><link rel="manifest" href="./manifest.webmanifest"><title>Perfusiones pediátricas · Simulador</title>
-<style>*{box-sizing:border-box}body{margin:0;background:#edf3f7;color:#163047;font:16px system-ui,sans-serif}main{max-width:620px;margin:auto;padding:16px}header{background:#123047;color:white;padding:22px;border-radius:16px}h1{margin:0;font-size:24px}small{color:#bed4e2}.warn{background:#fff0c7;border:2px solid #b47713;padding:14px;border-radius:12px;margin:14px 0}.card{background:white;border-radius:15px;padding:17px;margin:12px 0;box-shadow:0 2px 12px #18304715}h2{font-size:18px;margin:0 0 12px}label{display:block;font-size:13px;font-weight:650;margin:10px 0 4px}input,select,button{width:100%;padding:12px;font:inherit;border-radius:9px;border:1px solid #b4c4d2;background:white}button{margin-top:14px;background:#14619b;color:white;border:0;font-weight:700}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.result{font-size:30px;font-weight:750;color:#124f7c}.muted{color:#4c6475;font-size:13px}.error{color:#a12620;font-weight:bold}.monograph{margin-top:12px;border:1px solid #cedce6;padding:12px;border-radius:12px;background:#f7fafc}.monograph summary{cursor:pointer;font-weight:750;color:#14547c;padding:4px}.fact{padding:10px 0;border-bottom:1px solid #dce6ed;line-height:1.45}.fact:last-child{border:0}.fact strong{display:block;font-size:13px;color:#3e596c;margin-bottom:3px}.fact span{display:block;font-size:14px;white-space:pre-wrap}.source{overflow-wrap:anywhere;font-weight:650;color:#125f9a}.alertfact{background:#fff0e9;border:1px solid #dd9c76;border-radius:9px;padding:10px}.subtle{font-size:12px;color:#4c6475}@media(max-width:380px){.grid{grid-template-columns:1fr}}</style></head>
-<body><main><header><h1>Perfusiones pediátricas</h1><small>v0.4 · Simulador y fichas documentales</small></header><div class="warn"><strong>NO APTO PARA USO CLÍNICO.</strong> Utilizar únicamente datos ficticios. No contiene dosis ni concentraciones recomendadas. No preparar ni administrar medicamentos basándose en esta aplicación.</div>
+<style>*{box-sizing:border-box}body{margin:0;background:#edf3f7;color:#163047;font:16px system-ui,sans-serif}main{max-width:620px;margin:auto;padding:16px}header{background:#123047;color:white;padding:22px;border-radius:16px}h1{margin:0;font-size:24px}small{color:#bed4e2}.warn{background:#fff0c7;border:2px solid #b47713;padding:14px;border-radius:12px;margin:14px 0}.card{background:white;border-radius:15px;padding:17px;margin:12px 0;box-shadow:0 2px 12px #18304715}h2{font-size:18px;margin:0 0 12px}label{display:block;font-size:13px;font-weight:650;margin:10px 0 4px}input,select,button{width:100%;padding:12px;font:inherit;border-radius:9px;border:1px solid #b4c4d2;background:white}button{margin-top:14px;background:#14619b;color:white;border:0;font-weight:700}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.result{font-size:30px;font-weight:750;color:#124f7c}.muted{color:#4c6475;font-size:13px}.error{color:#a12620;font-weight:bold}.monograph{margin-top:12px;border:1px solid #cedce6;padding:12px;border-radius:12px;background:#f7fafc}.monograph summary{cursor:pointer;font-weight:750;color:#14547c;padding:4px}.fact{padding:10px 0;border-bottom:1px solid #dce6ed;line-height:1.45}.fact:last-child{border:0}.fact strong{display:block;font-size:13px;color:#3e596c;margin-bottom:3px}.fact span{display:block;font-size:14px;white-space:pre-wrap}.source{overflow-wrap:anywhere;font-weight:650;color:#125f9a}.alertfact{background:#fff0e9;border:1px solid #dd9c76;border-radius:9px;padding:10px}.subtle{font-size:12px;color:#4c6475}.evidence-entry{padding:12px 0;border-bottom:1px solid #d5e1ea}.evidence-entry:last-child{border-bottom:0}.evidence-values{font-size:19px;font-weight:750;color:#173c54;margin:6px 0}.evidence-source{font-size:13px;color:#425b6b}.observed{margin:12px 0 2px;padding:11px;background:#f0f4f6;border-radius:10px;color:#435666;font-size:14px}.backlog-item{margin:10px 0;padding-bottom:10px;border-bottom:1px solid #d6e0e7}@media(max-width:380px){.grid{grid-template-columns:1fr}}</style></head>
+<body><main><header><h1>Perfusiones pediátricas</h1><small>v0.5 · Evidencia de concentraciones</small></header><div class="warn"><strong>NO APTO PARA USO CLÍNICO.</strong> Utilizar únicamente datos ficticios. No contiene dosis ni concentraciones recomendadas. No preparar ni administrar medicamentos basándose en esta aplicación.</div>
 <section class="card"><h2>Biblioteca documental</h2><label for="drug">Medicamento</label><select id="drug"><option>Adrenalina</option><option>Noradrenalina</option><option>Dopamina</option><option>Dobutamina</option><option>Milrinona</option></select><p class="muted">Todas las preparaciones pendientes de validación. La selección no modifica los cálculos.</p><div id="drugInfo" class="warn" aria-live="polite">Biblioteca documental en carga. No hay preparaciones aprobadas.</div><details id="drugDetails" class="monograph"><summary>Consultar ficha documental y fuentes</summary><div id="drugFacts"><p class="muted">Cargando datos trazables de la AEMPS…</p></div></details></section>
+<section class="card" id="evidenceSection">
+<h2>Concentraciones publicadas en la bibliografía</h2>
+<p class="muted">Únicamente para revisión documental. <strong>No son preparaciones validadas ni dosis prescritas.</strong> Nunca se trasladan a la calculadora.</p>
+<label for="cohort">Población documentada</label>
+<select id="cohort"><option value="neonatologia">Neonatología: fuentes con desglose neonatal</option><option value="pediatria">Pediatría: fuentes generales</option></select>
+<div id="evidence" aria-live="polite"><p class="muted">Cargando fuentes publicadas…</p></div>
+<div class="warn"><strong>Preparaciones autorizadas para seleccionar: 0.</strong> Falta validación de Farmacia Hospitalaria, población, diluyente, vía, estabilidad y bomba. Los rangos observacionales de UCIN no son recomendaciones.</div>
+<details class="monograph"><summary>Pendientes para poder validar la biblioteca</summary><div id="reviewTasks" class="muted">Cargando lista de verificación…</div></details>
+</section>
 <section class="card"><h2>Cálculo de simulación</h2><div class="grid"><div><label for="weight">Peso ficticio (kg)</label><input id="weight" type="number" step="any" value="12"></div><div><label for="route">Vía (registro)</label><select id="route"><option>Periférica</option><option>Central</option></select></div></div>
 <label for="mode">Modalidad</label><select id="mode"><option value="direct">Dosis → mL/h</option><option value="inverse">mL/h → dosis</option></select>
 <div class="grid"><div><label for="unit">Unidad de dosis</label><select id="unit"><option value="ugkgmin">µg/kg/min</option><option value="ugkgh">µg/kg/h</option><option value="mgkgh">mg/kg/h</option><option value="mgkgmin">mg/kg/min</option><option value="uikgh">UI/kg/h</option><option value="uikgmin">UI/kg/min</option><option value="ugh">µg/h</option><option value="mgh">mg/h</option><option value="uih">UI/h</option></select></div><div><label for="cu">Unidad de concentración</label><select id="cu"><option value="ugml">µg/mL</option><option value="mgml">mg/mL</option><option value="uiml">UI/mL</option></select></div></div>
@@ -43,7 +52,7 @@ function renderDrug(){
   const p=document.createElement('p');p.className='subtle';p.textContent='Datos referidos exclusivamente a la presentación indicada. La disponibilidad comercial no está confirmada. Documento no revisado por Farmacia Hospitalaria.';
   r.append(k,link,p);box.append(r);
 }
-$('drug').onchange=renderDrug;renderDrug();
+$('drug').onchange=()=>{renderDrug();renderEvidence()};renderDrug();
 fetch('./biblioteca-farmacos.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('No disponible');return r.json()}).then(lib=>{
   if(lib.clinical_use_allowed!==false||lib.status!=='INVESTIGACION_DOCUMENTAL_NO_VALIDADA'||!Array.isArray(lib.drugs)||lib.drugs.length!==5||lib.drugs.some(d=>d.validation!=='PENDIENTE'||!Array.isArray(d.preparations)||d.preparations.length!==0||!d.source||!d.source.url.startsWith('https://cima.aemps.es/')))throw Error('Biblioteca no autorizada');
   drugData=lib.drugs;
@@ -51,6 +60,46 @@ fetch('./biblioteca-farmacos.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw E
   drugData.forEach(d=>{const opt=document.createElement('option');opt.value=d.id;opt.textContent=d.name;$('drug').append(opt)});
   renderDrug();
 }).catch(()=>{$('drugInfo').textContent='Biblioteca no disponible o no validada: uso clínico bloqueado. Solo cálculo con datos ficticios.';$('drugFacts').textContent='Sin ficha documental disponible.'});
+let research=null;
+function researchIsSafe(m){
+ const ids=new Set(['adrenalina','noradrenalina','dopamina','dobutamina','milrinona']);
+ const known=new Set(Array.isArray(m.sources)?m.sources.map(s=>s.id):[]);
+ return m.clinical_use_allowed===false&&m.source_data_only===true&&m.status==='MATRIZ_DE_EVIDENCIA_SIN_APROBACION_CLINICA'&&Array.isArray(m.drugs)&&m.drugs.length===5&&m.drugs.every(d=>ids.has(d.id)&&Array.isArray(d.candidate_sets)&&d.candidate_sets.every(s=>known.has(s.source_id)&&s.validated_locally===false&&s.classification==='CONCENTRACIONES_PUBLICADAS_NO_APROBADAS'&&Array.isArray(s.values)&&s.values.every(x=>Number.isFinite(x)&&x>0)))&&Array.isArray(m.validation_backlog);
+}
+const elem=(tag,text,className)=>{const e=document.createElement(tag);if(text!==undefined&&text!==null)e.textContent=String(text);if(className)e.className=className;return e};
+function renderEvidence(){
+ const container=$('evidence');container.replaceChildren();
+ if(!research){container.append(elem('p','Datos documentales no disponibles. Ninguna preparación puede seleccionarse.','muted'));return}
+ const id=$('drug').value, drug=research.drugs.find(d=>d.id===id);
+ if(!drug){container.append(elem('p','Medicamento sin datos verificados.','muted'));return}
+ const cohort=$('cohort').value;
+ const sets=drug.candidate_sets.filter(s=>cohort==='neonatologia'?s.cohort==='neonatologia':s.cohort==='pediatria'||s.cohort==='pediatria_sin_desglose_neonatal');
+ const header=elem('p',cohort==='neonatologia'?'Solo fuentes que separan expresamente neonatología. Las bandas de peso aún no están validadas.':'Las fuentes de pediatría general no deben aplicarse automáticamente a neonatos.','muted');container.append(header);
+ if(!sets.length)container.append(elem('p','No hemos incorporado todavía una concentración neonatal específica suficientemente contrastada para este fármaco. Pendiente de revisar anexos y bandas de peso.','muted'));
+ for(const s of sets){
+   const src=research.sources.find(x=>x.id===s.source_id);
+   const entry=elem('div',null,'evidence-entry');
+   entry.append(elem('div',src?src.label:s.source_id,'evidence-source'));
+   entry.append(elem('div',s.values.join(' · ')+' '+s.unit,'evidence-values'));
+   entry.append(elem('p',s.notes,'muted'));
+   const a=elem('a','Ver publicación y página de origen ↗','source');a.href=src.url;a.target='_blank';a.rel='noopener noreferrer';entry.append(a);
+   entry.append(elem('div','Estado: LITERATURA PUBLICADA · NO APROBADO PARA PREPARACIÓN','subtle'));
+   container.append(entry);
+ }
+ const observed=drug.observed_nicu_range;
+ if(observed)container.append(elem('p','Rango observado en 9 UCIN españolas (NO recomendado): '+observed.min+'–'+observed.max+' '+observed.unit+'. Estos límites reflejan variabilidad entre centros, no un intervalo seguro ni concentraciones estándar.','observed'));
+ const flags=elem('div',null,'subtle');for(const s of drug.safety_flags){flags.append(elem('p','• '+s))}container.append(flags);
+}
+function renderBacklog(){
+ const container=$('reviewTasks');container.replaceChildren();
+ if(!research){container.append(elem('p','No disponible.'));return}
+ for(const task of research.validation_backlog){const e=elem('div',null,'backlog-item');e.append(elem('strong',task.code+' · '+task.scope+' · PENDIENTE'));e.append(elem('div',task.requirement));e.append(elem('div','Responsable previsto: '+task.owner,'subtle'));container.append(e)}
+}
+$('cohort').onchange=renderEvidence;
+fetch('./matriz-concentraciones-publicadas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Fuente inaccesible');return r.json()}).then(m=>{
+ if(!researchIsSafe(m))throw Error('Estructura no válida o aprobaciones no autorizadas');
+ research=m;renderEvidence();renderBacklog();
+}).catch(()=>{research=null;renderEvidence();renderBacklog()});
 const units={ugkgmin:['mass',60,1,true],ugkgh:['mass',1,1,true],mgkgh:['mass',1,1000,true],mgkgmin:['mass',60,1000,true],uikgh:['ui',1,1,true],uikgmin:['ui',60,1,true],ugh:['mass',1,1,false],mgh:['mass',1,1000,false],uih:['ui',1,1,false]};
 const concs={ugml:['mass',1],mgml:['mass',1000],uiml:['ui',1]};
 function compute(w,v,c,u,cu,inverse){if(![w,v,c].every(x=>Number.isFinite(x)&&x>0))throw Error('Introduce números positivos y finitos.');const [kind,time,factor,perkg]=units[u], [ckind,cf]=concs[cu];if(kind!==ckind)throw Error('Unidades incompatibles: no se puede convertir UI a masa.');const k=time*factor*(perkg?w:1)/(c*cf);const result=inverse?v/k:v*k;if(!Number.isFinite(result)||result<=0)throw Error('Resultado fuera de rango.');return result}
