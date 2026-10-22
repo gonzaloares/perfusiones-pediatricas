@@ -1,0 +1,572 @@
+{
+  "schema_version": "1.0",
+  "version": "0.6.0",
+  "reviewed_on": "2026-10-22",
+  "clinical_use_allowed": false,
+  "source_data_only": true,
+  "status": "REVISION_NEONATAL_BANDAS_NO_VALIDADA",
+  "intro": "Tabla nacional NPPG de noviembre 2024, comparada con guía regional NHS East of England 2025. Son concentraciones publicadas en protocolos extranjeros, no dosis, preparaciones aprobadas ni recomendaciones para su utilización en el HURJC.",
+  "original_weight_bands": [
+    "Less than 2 kg",
+    "2-5 kg",
+    "5-20 kg",
+    "Greater than 20 kg",
+    "Greater than 5 kg (solo dobutamina)"
+  ],
+  "weight_scope_note": "Las bandas son etiquetas documentales del original, no clasificadores automáticos de pacientes. Los límites exactos no se resuelven en esta app. Las concentraciones no se vuelcan a la calculadora.",
+  "source_nppg": {
+    "id": "NPPG_RCPCH_2024",
+    "name": "NPPG/RCPCH/BAPM/PCCS — Framework of Concentrations (noviembre de 2024)",
+    "url": "https://nppg.org.uk/wp-content/uploads/2025/01/Standard-Infusions-Nov-2024-Final.pdf",
+    "publisher": "Neonatal and Paediatric Pharmacy Group (Reino Unido)",
+    "kind": "MARCO_NACIONAL_REINO_UNIDO",
+    "pages": "Tablas de concentraciones por peso, págs. 2–3 (paginación interna del PDF)",
+    "status": "PUBLICADO_NO_VALIDADO_LOCALMENTE"
+  },
+  "source_eoe": {
+    "id": "EOE_ODN_2025",
+    "name": "East of England Neonatal ODN — Neonatal Drug Infusion Guideline (ratificada junio de 2025)",
+    "url": "https://eoeneonatalpccsicnetwork.nhs.uk/wp-content/uploads/2025/08/EoE-Neonatal-Infusion-guideline-Final-Aug-2025.pdf",
+    "publisher": "NHS East of England Neonatal Operational Delivery Network",
+    "kind": "PROTOCOLO_REGIONAL_EXTRANJERO",
+    "pages": "Tablas de opciones: págs. 3–5; caudal y consideraciones: págs. 6, 8 y 10",
+    "status": "PUBLICADO_NO_VALIDADO_LOCALMENTE"
+  },
+  "neonatal_safety": {
+    "short_half_life_drugs": [
+      "adrenalina",
+      "noradrenalina",
+      "dopamina",
+      "dobutamina"
+    ],
+    "recommended_syringe_ml": [
+      20,
+      30
+    ],
+    "low_flow_delivery_caution_ml_h": 0.5,
+    "low_flow_interpretation": "EoE ODN 2025 pág. 10: inconsistencia de administración descrita con ≤0,5 mL/h; no equivale a límite universal de funcionamiento de cualquier bomba.",
+    "eoe_driver_minimum_rate_ml_h": 0.1,
+    "rate_limit_interpretation": "EoE ODN pág. 6: umbral ilustrativo de bombas de esa red, NO umbral universal seguro.",
+    "movement_caution": "Cambios de altura relativa entre jeringa y paciente pueden producir variaciones bruscas de administración de fármacos de vida media corta.",
+    "source_section": "EoE 2025, págs. 6 y 10"
+  },
+  "drugs": [
+    {
+      "id": "adrenalina",
+      "name": "Adrenalina",
+      "nppg": [
+        {
+          "weight_band_id": "lt2",
+          "weight_band_original": "Less than 2 kg",
+          "concentration": {
+            "value": 10,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 2,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "2to5",
+          "weight_band_original": "2-5 kg",
+          "concentration": {
+            "value": 20,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 2,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "5to20",
+          "weight_band_original": "5-20 kg",
+          "concentration": {
+            "value": 40,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 2,
+          "notes": "Si se utiliza para pacientes <5 kg: el marco indica jeringa de 20 mL.",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "gt20",
+          "weight_band_original": "Greater than 20 kg",
+          "concentration": {
+            "value": 160,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 2,
+          "notes": "Si se utiliza para pacientes <5 kg: el marco indica jeringa de 20 mL.",
+          "clinical_approval": false
+        }
+      ],
+      "eoe": [
+        {
+          "published_amount": {
+            "value": 0.2,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 10,
+            "unit": "µg/mL"
+          },
+          "reference_page": 3,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 0.4,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 20,
+            "unit": "µg/mL"
+          },
+          "reference_page": 3,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 0.8,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 40,
+            "unit": "µg/mL"
+          },
+          "reference_page": 3,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 3.2,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 160,
+            "unit": "µg/mL"
+          },
+          "reference_page": 3,
+          "clinical_approval": false
+        }
+      ],
+      "cautions": [
+        "Fármaco de vida media corta; el documento regional recomienda jeringas de 20–30 mL a bajos caudales.",
+        "No equiparar este marco con una preparación aprobada para la presentación española."
+      ]
+    },
+    {
+      "id": "noradrenalina",
+      "name": "Noradrenalina",
+      "nppg": [
+        {
+          "weight_band_id": "lt2",
+          "weight_band_original": "Less than 2 kg",
+          "concentration": {
+            "value": 10,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 3,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "2to5",
+          "weight_band_original": "2-5 kg",
+          "concentration": {
+            "value": 20,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 3,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "5to20",
+          "weight_band_original": "5-20 kg",
+          "concentration": {
+            "value": 40,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 3,
+          "notes": "Si se utiliza para pacientes <5 kg: el marco indica jeringa de 20 mL.",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "gt20",
+          "weight_band_original": "Greater than 20 kg",
+          "concentration": {
+            "value": 160,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 3,
+          "notes": "Si se utiliza para pacientes <5 kg: el marco indica jeringa de 20 mL.",
+          "clinical_approval": false
+        }
+      ],
+      "eoe": [
+        {
+          "published_amount": {
+            "value": 0.2,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 10,
+            "unit": "µg/mL"
+          },
+          "reference_page": 5,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 0.4,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 20,
+            "unit": "µg/mL"
+          },
+          "reference_page": 5,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 0.8,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 40,
+            "unit": "µg/mL"
+          },
+          "reference_page": 5,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 3.2,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 160,
+            "unit": "µg/mL"
+          },
+          "reference_page": 5,
+          "clinical_approval": false
+        }
+      ],
+      "cautions": [
+        "Alto riesgo de confusión entre noradrenalina base y sal tartrato: ninguna cifra del marco se convierte a la ampolla española de forma automática.",
+        "Concentración del documento original ≠ formulación comercial ni concentración validada por el hospital."
+      ]
+    },
+    {
+      "id": "dopamina",
+      "name": "Dopamina",
+      "nppg": [
+        {
+          "weight_band_id": "lt2",
+          "weight_band_original": "Less than 2 kg",
+          "concentration": {
+            "value": 1,
+            "unit": "mg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 2,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "2to5",
+          "weight_band_original": "2-5 kg",
+          "concentration": {
+            "value": 2,
+            "unit": "mg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 2,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "5to20",
+          "weight_band_original": "5-20 kg",
+          "concentration": {
+            "value": 5,
+            "unit": "mg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 2,
+          "notes": "Si se utiliza para pacientes <5 kg: el marco indica jeringa de 20 mL.",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "gt20",
+          "weight_band_original": "Greater than 20 kg",
+          "concentration": {
+            "value": 12,
+            "unit": "mg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 2,
+          "notes": "Si se utiliza para pacientes <5 kg: el marco indica jeringa de 20 mL.",
+          "clinical_approval": false
+        }
+      ],
+      "eoe": [
+        {
+          "published_amount": {
+            "value": 20,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 1,
+            "unit": "mg/mL"
+          },
+          "reference_page": 4,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 30,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 1.5,
+            "unit": "mg/mL"
+          },
+          "reference_page": 4,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 90,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 4.5,
+            "unit": "mg/mL"
+          },
+          "reference_page": 4,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 240,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 12,
+            "unit": "mg/mL"
+          },
+          "reference_page": 4,
+          "clinical_approval": false
+        }
+      ],
+      "cautions": [
+        "Diferencia real entre NPPG y guía regional: 2 frente a 1,5 mg/mL; 5 frente a 4,5 mg/mL. NO fusionar como si fueran equivalentes.",
+        "La ficha técnica de Dopamina Grifols revisada no recomienda el uso pediátrico de esa presentación."
+      ]
+    },
+    {
+      "id": "dobutamina",
+      "name": "Dobutamina",
+      "nppg": [
+        {
+          "weight_band_id": "lt2",
+          "weight_band_original": "Less than 2 kg",
+          "concentration": {
+            "value": 1,
+            "unit": "mg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 2,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "2to5",
+          "weight_band_original": "2-5 kg",
+          "concentration": {
+            "value": 2,
+            "unit": "mg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 2,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "gt5",
+          "weight_band_original": "Greater than 5 kg",
+          "concentration": {
+            "value": 5,
+            "unit": "mg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 2,
+          "notes": "Banda publicada >5 kg sin subdivisión 5–20 kg / >20 kg; si se utiliza para <5 kg, jeringa de 20 mL.",
+          "clinical_approval": false
+        }
+      ],
+      "eoe": [
+        {
+          "published_amount": {
+            "value": 20,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 1,
+            "unit": "mg/mL"
+          },
+          "reference_page": 4,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 40,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 2,
+            "unit": "mg/mL"
+          },
+          "reference_page": 4,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 100,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 5,
+            "unit": "mg/mL"
+          },
+          "reference_page": 4,
+          "clinical_approval": false
+        }
+      ],
+      "cautions": [
+        "El marco NPPG publica una banda única >5 kg; no sustituirla por dos bandas originales distintas.",
+        "Precauciones de concentración elevada y vía central en FT de Dobutamina Hikma deben evaluarse por separado."
+      ]
+    },
+    {
+      "id": "milrinona",
+      "name": "Milrinona",
+      "nppg": [
+        {
+          "weight_band_id": "2to5",
+          "weight_band_original": "2-5 kg",
+          "concentration": {
+            "value": 100,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 20,
+          "reference_page": 3,
+          "notes": "El documento no incluye una fila específica para <2 kg.",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "5to20",
+          "weight_band_original": "5-20 kg",
+          "concentration": {
+            "value": 400,
+            "unit": "µg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 3,
+          "notes": "",
+          "clinical_approval": false
+        },
+        {
+          "weight_band_id": "gt20",
+          "weight_band_original": "Greater than 20 kg",
+          "concentration": {
+            "value": 1,
+            "unit": "mg/mL"
+          },
+          "published_syringe_volume_ml": 50,
+          "reference_page": 3,
+          "notes": "",
+          "clinical_approval": false
+        }
+      ],
+      "eoe": [
+        {
+          "published_amount": {
+            "value": 2,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 20,
+          "concentration": {
+            "value": 100,
+            "unit": "µg/mL"
+          },
+          "reference_page": 5,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 20,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 50,
+          "concentration": {
+            "value": 400,
+            "unit": "µg/mL"
+          },
+          "reference_page": 5,
+          "clinical_approval": false
+        },
+        {
+          "published_amount": {
+            "value": 50,
+            "unit": "mg"
+          },
+          "published_total_volume_ml": 50,
+          "concentration": {
+            "value": 1,
+            "unit": "mg/mL"
+          },
+          "reference_page": 5,
+          "clinical_approval": false
+        }
+      ],
+      "cautions": [
+        "ATENCIÓN: no hay una banda <2 kg definida explícitamente para milrinona en la tabla NPPG 2024 consultada.",
+        "La guía regional incluye opciones para el entorno neonatal, pero no establece aquí autorización automática para menores de 2 kg. Verificar función renal y farmacocinética en prematuros."
+      ]
+    }
+  ],
+  "local_validation": {
+    "approved_concentrations": [],
+    "approved_preparations": [],
+    "protocols": [],
+    "approved_by": [],
+    "date": null
+  }
+}
