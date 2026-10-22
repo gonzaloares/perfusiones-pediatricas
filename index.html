@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123047"><link rel="manifest" href="./manifest.webmanifest"><title>Perfusiones pediátricas · Simulador</title>
-<style>*{box-sizing:border-box}body{margin:0;background:#edf3f7;color:#163047;font:16px system-ui,sans-serif}main{max-width:620px;margin:auto;padding:16px}header{background:#123047;color:white;padding:22px;border-radius:16px}h1{margin:0;font-size:24px}small{color:#bed4e2}.warn{background:#fff0c7;border:2px solid #b47713;padding:14px;border-radius:12px;margin:14px 0}.card{background:white;border-radius:15px;padding:17px;margin:12px 0;box-shadow:0 2px 12px #18304715}h2{font-size:18px;margin:0 0 12px}label{display:block;font-size:13px;font-weight:650;margin:10px 0 4px}input,select,button{width:100%;padding:12px;font:inherit;border-radius:9px;border:1px solid #b4c4d2;background:white}button{margin-top:14px;background:#14619b;color:white;border:0;font-weight:700}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.result{font-size:30px;font-weight:750;color:#124f7c}.muted{color:#4c6475;font-size:13px}.error{color:#a12620;font-weight:bold}.monograph{margin-top:12px;border:1px solid #cedce6;padding:12px;border-radius:12px;background:#f7fafc}.monograph summary{cursor:pointer;font-weight:750;color:#14547c;padding:4px}.fact{padding:10px 0;border-bottom:1px solid #dce6ed;line-height:1.45}.fact:last-child{border:0}.fact strong{display:block;font-size:13px;color:#3e596c;margin-bottom:3px}.fact span{display:block;font-size:14px;white-space:pre-wrap}.source{overflow-wrap:anywhere;font-weight:650;color:#125f9a}.alertfact{background:#fff0e9;border:1px solid #dd9c76;border-radius:9px;padding:10px}.subtle{font-size:12px;color:#4c6475}.evidence-entry{padding:12px 0;border-bottom:1px solid #d5e1ea}.evidence-entry:last-child{border-bottom:0}.evidence-values{font-size:19px;font-weight:750;color:#173c54;margin:6px 0}.evidence-source{font-size:13px;color:#425b6b}.observed{margin:12px 0 2px;padding:11px;background:#f0f4f6;border-radius:10px;color:#435666;font-size:14px}.backlog-item{margin:10px 0;padding-bottom:10px;border-bottom:1px solid #d6e0e7}@media(max-width:380px){.grid{grid-template-columns:1fr}}</style></head>
-<body><main><header><h1>Perfusiones pediátricas</h1><small>v0.5 · Evidencia de concentraciones</small></header><div class="warn"><strong>NO APTO PARA USO CLÍNICO.</strong> Utilizar únicamente datos ficticios. No contiene dosis ni concentraciones recomendadas. No preparar ni administrar medicamentos basándose en esta aplicación.</div>
+<style>*{box-sizing:border-box}body{margin:0;background:#edf3f7;color:#163047;font:16px system-ui,sans-serif}main{max-width:620px;margin:auto;padding:16px}header{background:#123047;color:white;padding:22px;border-radius:16px}h1{margin:0;font-size:24px}small{color:#bed4e2}.warn{background:#fff0c7;border:2px solid #b47713;padding:14px;border-radius:12px;margin:14px 0}.card{background:white;border-radius:15px;padding:17px;margin:12px 0;box-shadow:0 2px 12px #18304715}h2{font-size:18px;margin:0 0 12px}label{display:block;font-size:13px;font-weight:650;margin:10px 0 4px}input,select,button{width:100%;padding:12px;font:inherit;border-radius:9px;border:1px solid #b4c4d2;background:white}button{margin-top:14px;background:#14619b;color:white;border:0;font-weight:700}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.result{font-size:30px;font-weight:750;color:#124f7c}.muted{color:#4c6475;font-size:13px}.error{color:#a12620;font-weight:bold}.monograph{margin-top:12px;border:1px solid #cedce6;padding:12px;border-radius:12px;background:#f7fafc}.monograph summary{cursor:pointer;font-weight:750;color:#14547c;padding:4px}.fact{padding:10px 0;border-bottom:1px solid #dce6ed;line-height:1.45}.fact:last-child{border:0}.fact strong{display:block;font-size:13px;color:#3e596c;margin-bottom:3px}.fact span{display:block;font-size:14px;white-space:pre-wrap}.source{overflow-wrap:anywhere;font-weight:650;color:#125f9a}.alertfact{background:#fff0e9;border:1px solid #dd9c76;border-radius:9px;padding:10px}.subtle{font-size:12px;color:#4c6475}.evidence-entry{padding:12px 0;border-bottom:1px solid #d5e1ea}.evidence-entry:last-child{border-bottom:0}.evidence-values{font-size:19px;font-weight:750;color:#173c54;margin:6px 0}.evidence-source{font-size:13px;color:#425b6b}.observed{margin:12px 0 2px;padding:11px;background:#f0f4f6;border-radius:10px;color:#435666;font-size:14px}.backlog-item{margin:10px 0;padding-bottom:10px;border-bottom:1px solid #d6e0e7}.bandrow{margin:12px 0;padding:12px;border:1px solid #d9e4ed;border-radius:10px}.bandrow h3{font-size:15px;margin:0 0 4px}.bandrow p{font-size:13px;margin:5px 0;color:#405a6c}.bandvalue{font-size:22px;font-weight:800;color:#173e5a}.orange-note{border-left:4px solid #bc7a20;padding:10px;background:#fff4de;margin:10px 0;border-radius:5px}.source-line{font-size:13px;line-height:1.45}@media(max-width:380px){.grid{grid-template-columns:1fr}}</style></head>
+<body><main><header><h1>Perfusiones pediátricas</h1><small>v0.6 · Bandas neonatales documentales</small></header><div class="warn"><strong>NO APTO PARA USO CLÍNICO.</strong> Utilizar únicamente datos ficticios. No contiene dosis ni concentraciones recomendadas. No preparar ni administrar medicamentos basándose en esta aplicación.</div>
 <section class="card"><h2>Biblioteca documental</h2><label for="drug">Medicamento</label><select id="drug"><option>Adrenalina</option><option>Noradrenalina</option><option>Dopamina</option><option>Dobutamina</option><option>Milrinona</option></select><p class="muted">Todas las preparaciones pendientes de validación. La selección no modifica los cálculos.</p><div id="drugInfo" class="warn" aria-live="polite">Biblioteca documental en carga. No hay preparaciones aprobadas.</div><details id="drugDetails" class="monograph"><summary>Consultar ficha documental y fuentes</summary><div id="drugFacts"><p class="muted">Cargando datos trazables de la AEMPS…</p></div></details></section>
 <section class="card" id="evidenceSection">
 <h2>Concentraciones publicadas en la bibliografía</h2>
@@ -11,6 +11,25 @@
 <div id="evidence" aria-live="polite"><p class="muted">Cargando fuentes publicadas…</p></div>
 <div class="warn"><strong>Preparaciones autorizadas para seleccionar: 0.</strong> Falta validación de Farmacia Hospitalaria, población, diluyente, vía, estabilidad y bomba. Los rangos observacionales de UCIN no son recomendaciones.</div>
 <details class="monograph"><summary>Pendientes para poder validar la biblioteca</summary><div id="reviewTasks" class="muted">Cargando lista de verificación…</div></details>
+</section>
+<section class="card" id="ukNeonatalModule">
+<h2>Marco neonatal por bandas de peso · Reino Unido</h2>
+<p class="muted">Marco NPPG/RCPCH (noviembre 2024) y guía NHS East of England (2025). <strong>No equivalen a protocolos españoles aprobados.</strong> Solo consulta documental; no se envían cifras a la calculadora.</p>
+<label for="ukWeightBand">Consultar banda de peso publicada (no seleccionar paciente)</label>
+<select id="ukWeightBand">
+<option value="lt2">Menos de 2 kg</option>
+<option value="2to5">2–5 kg</option>
+<option value="5to20">5–20 kg</option>
+<option value="gt20">Más de 20 kg</option>
+<option value="gt5">Más de 5 kg (banda única de dobutamina)</option>
+<option value="all">Todas las bandas</option>
+</select>
+<div id="nppgBandFacts" aria-live="polite"><p class="muted">Cargando documento NPPG…</p></div>
+<details class="monograph"><summary>Comparar con guía neonatal regional (NHS, 2025)</summary>
+<div id="regionalOptions"><p class="muted">Cargando comparación regional…</p></div>
+</details>
+<div class="orange-note" id="neonatalSafety">La administración a caudales muy bajos y los movimientos de altura entre bombas y paciente exigen valoración técnica independiente. En perfusiones de vida media corta, la guía británica describe ventajas de jeringas de 20–30 mL.</div>
+<p class="muted">Sin validación por Farmacia Hospitalaria, sin confirmación de formulación española, diluyente, estabilidad, acceso vascular ni biblioteca de bomba. Concentraciones clínicas habilitadas: <strong>0</strong>.</p>
 </section>
 <section class="card"><h2>Cálculo de simulación</h2><div class="grid"><div><label for="weight">Peso ficticio (kg)</label><input id="weight" type="number" step="any" value="12"></div><div><label for="route">Vía (registro)</label><select id="route"><option>Periférica</option><option>Central</option></select></div></div>
 <label for="mode">Modalidad</label><select id="mode"><option value="direct">Dosis → mL/h</option><option value="inverse">mL/h → dosis</option></select>
@@ -52,13 +71,13 @@ function renderDrug(){
   const p=document.createElement('p');p.className='subtle';p.textContent='Datos referidos exclusivamente a la presentación indicada. La disponibilidad comercial no está confirmada. Documento no revisado por Farmacia Hospitalaria.';
   r.append(k,link,p);box.append(r);
 }
-$('drug').onchange=()=>{renderDrug();renderEvidence()};renderDrug();
+$('drug').onchange=()=>{renderDrug();renderEvidence();renderNeonatal()};renderDrug();
 fetch('./biblioteca-farmacos.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('No disponible');return r.json()}).then(lib=>{
   if(lib.clinical_use_allowed!==false||lib.status!=='INVESTIGACION_DOCUMENTAL_NO_VALIDADA'||!Array.isArray(lib.drugs)||lib.drugs.length!==5||lib.drugs.some(d=>d.validation!=='PENDIENTE'||!Array.isArray(d.preparations)||d.preparations.length!==0||!d.source||!d.source.url.startsWith('https://cima.aemps.es/')))throw Error('Biblioteca no autorizada');
   drugData=lib.drugs;
   $('drug').replaceChildren();
   drugData.forEach(d=>{const opt=document.createElement('option');opt.value=d.id;opt.textContent=d.name;$('drug').append(opt)});
-  renderDrug();renderEvidence();
+  renderDrug();renderEvidence();renderNeonatal();
 }).catch(()=>{$('drugInfo').textContent='Biblioteca no disponible o no validada: uso clínico bloqueado. Solo cálculo con datos ficticios.';$('drugFacts').textContent='Sin ficha documental disponible.'});
 let research=null;
 function researchIsSafe(m){
@@ -100,6 +119,68 @@ fetch('./matriz-concentraciones-publicadas.json',{cache:'no-store'}).then(r=>{if
  if(!researchIsSafe(m))throw Error('Estructura no válida o aprobaciones no autorizadas');
  research=m;renderEvidence();renderBacklog();
 }).catch(()=>{research=null;renderEvidence();renderBacklog()});
+
+let ukNeonatal=null;
+const BAND_LABELS={lt2:'Menos de 2 kg', '2to5':'2–5 kg','5to20':'5–20 kg',gt20:'Más de 20 kg',gt5:'Más de 5 kg',all:'Todas'};
+function validUKData(m){
+ const ids=new Set(['adrenalina','noradrenalina','dopamina','dobutamina','milrinona']);
+ const bands=new Set(['lt2','2to5','5to20','gt20','gt5']);
+ return !!m&&m.clinical_use_allowed===false&&m.source_data_only===true&&m.status==='REVISION_NEONATAL_BANDAS_NO_VALIDADA'&&
+ Array.isArray(m.drugs)&&m.drugs.length===5&&m.drugs.every(d=>ids.has(d.id)&&Array.isArray(d.nppg)&&Array.isArray(d.eoe)&&
+ d.nppg.every(x=>bands.has(x.weight_band_id)&&x.clinical_approval===false&&Number.isFinite(x.concentration.value)&&x.concentration.value>0)&&
+ d.eoe.every(x=>x.clinical_approval===false&&Number.isFinite(x.concentration.value)&&x.concentration.value>0))&&
+ Array.isArray(m.local_validation.approved_preparations)&&m.local_validation.approved_preparations.length===0&&
+ Array.isArray(m.local_validation.approved_concentrations)&&m.local_validation.approved_concentrations.length===0;
+}
+function refLink(parent,url,label){
+ const a=elem('a',label,'source source-line');
+ a.href=url;a.target='_blank';a.rel='noopener noreferrer';parent.append(a);
+}
+function renderNeonatal(){
+ const parent=$('nppgBandFacts'),regional=$('regionalOptions');
+ parent.replaceChildren();regional.replaceChildren();
+ if(!ukNeonatal){
+  parent.append(elem('p','Marco británico no disponible o no verificado: ninguna concentración es seleccionable.','muted'));
+  regional.append(elem('p','Sin datos regionales verificados.','muted'));
+  return;
+ }
+ const drug=ukNeonatal.drugs.find(d=>d.id===$('drug').value);
+ if(!drug){parent.append(elem('p','Fármaco sin datos del marco consultado.','muted'));return}
+ const band=$('ukWeightBand').value;
+ const rows=drug.nppg.filter(x=>band==='all'||x.weight_band_id===band);
+ parent.append(elem('p','Bandas originales del marco NPPG, no clasificación automática de pacientes. Los extremos de banda deben aclararse en el protocolo hospitalario.','muted'));
+ if(!rows.length){
+  const missing=drug.id==='milrinona'&&band==='lt2';
+  parent.append(elem('div',missing?'SIN BANDA <2 KG EN EL MARCO NPPG CONSULTADO. No extrapolar los valores de 2–5 kg.':'No existe fila con esa banda exacta en el documento consultado. Revisar la definición original.','orange-note'));
+  if(drug.id==='dobutamina'&&(band==='5to20'||band==='gt20'))parent.append(elem('p','Dobutamina utiliza una banda original única “Greater than 5 kg”; elige esa banda o “Todas”.','muted'));
+ }
+ for(const x of rows){
+  const div=elem('div',null,'bandrow');
+  div.append(elem('h3',BAND_LABELS[x.weight_band_id]));
+  div.append(elem('div',String(x.concentration.value).replace('.',',')+' '+x.concentration.unit,'bandvalue'));
+  div.append(elem('p','Volumen de jeringa recogido en la tabla original: '+x.published_syringe_volume_ml+' mL. No es una indicación local de preparación.','muted'));
+  if(x.notes)div.append(elem('p',x.notes,'muted'));
+  div.append(elem('p','NPPG 2024 · pág. '+x.reference_page+' · SIN APROBACIÓN LOCAL','subtle'));
+  parent.append(div);
+ }
+ refLink(parent,ukNeonatal.source_nppg.url,'Ver marco NPPG/RCPCH de noviembre de 2024 ↗');
+ regional.append(elem('p','Opciones enumeradas por la guía neonatal East of England; no están vinculadas automáticamente a bandas de peso ni autorizadas en España.','muted'));
+ for(const x of drug.eoe){
+  const div=elem('div',null,'bandrow');
+  div.append(elem('div',String(x.concentration.value).replace('.',',')+' '+x.concentration.unit,'bandvalue'));
+  div.append(elem('p','Opción documental nº '+(drug.eoe.indexOf(x)+1)+' · pág. '+x.reference_page+' · no aprobada localmente','muted'));
+  regional.append(div);
+ }
+ refLink(regional,ukNeonatal.source_eoe.url,'Ver guía neonatal NHS East of England (2025) ↗');
+ for(const line of drug.cautions)regional.append(elem('p','• '+line,'muted'));
+ const caution=$('neonatalSafety');
+ caution.textContent='EoE 2025, pág. 10: posibles inconsistencias con caudales ≤0,5 mL/h y cambios de altura bomba-paciente; para adrenalina, noradrenalina, dopamina y dobutamina se recomiendan jeringas de 20–30 mL. El umbral técnico es contextual, no universal. NO equivale a verificación de bomba ni habilita preparaciones.';
+}
+$('ukWeightBand').onchange=renderNeonatal;
+fetch('./marco-neonatal-bandas-nppg.json',{cache:'no-store'})
+ .then(r=>{if(!r.ok)throw Error('Sin acceso a la matriz');return r.json()})
+ .then(m=>{if(!validUKData(m))throw Error('Datos bloqueados');ukNeonatal=m;renderNeonatal()})
+ .catch(()=>{ukNeonatal=null;renderNeonatal()});
 const units={ugkgmin:['mass',60,1,true],ugkgh:['mass',1,1,true],mgkgh:['mass',1,1000,true],mgkgmin:['mass',60,1000,true],uikgh:['ui',1,1,true],uikgmin:['ui',60,1,true],ugh:['mass',1,1,false],mgh:['mass',1,1000,false],uih:['ui',1,1,false]};
 const concs={ugml:['mass',1],mgml:['mass',1000],uiml:['ui',1]};
 function compute(w,v,c,u,cu,inverse){if(![w,v,c].every(x=>Number.isFinite(x)&&x>0))throw Error('Introduce números positivos y finitos.');const [kind,time,factor,perkg]=units[u], [ckind,cf]=concs[cu];if(kind!==ckind)throw Error('Unidades incompatibles: no se puede convertir UI a masa.');const k=time*factor*(perkg?w:1)/(c*cf);const result=inverse?v/k:v*k;if(!Number.isFinite(result)||result<=0)throw Error('Resultado fuera de rango.');return result}
