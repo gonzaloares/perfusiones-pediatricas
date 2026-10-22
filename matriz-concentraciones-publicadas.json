@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "reviewed_on": "2026-10-22",
   "clinical_use_allowed": false,
   "source_data_only": true,
@@ -15,8 +15,8 @@
       "id": "ES_DELPHI_2024",
       "label": "Consenso multicéntrico español (Delphi), Eur J Hosp Pharm 2024",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11042264/",
-      "location": "Tabla 2 (adrenalina). Resto de fármacos: tabla suplementaria pendiente de extracción y verificación.",
-      "type": "CONSENSO_PUB"
+      "location": "Artículo principal, tabla 2 (extracto inicial), y fichero suplementario ejhpharm-2022-003316supp001.pdf citado como continuación: concentraciones de los cinco vasoactivos NO VERIFICADAS en origen.",
+      "type": "CONSENSO_REFERENCIA_SUPLEMENTO_PENDIENTE"
     },
     {
       "id": "ASHP_S4S_2026",
@@ -45,37 +45,6 @@
       "id": "adrenalina",
       "name": "Adrenalina (epinefrina)",
       "candidate_sets": [
-        {
-          "source_id": "ES_DELPHI_2024",
-          "cohort": "pediatria",
-          "values": [
-            20,
-            40,
-            60,
-            100
-          ],
-          "unit": "µg/mL",
-          "source_locator": "Tabla 2 (columna Pediatrics)",
-          "classification": "CONCENTRACIONES_PUBLICADAS_NO_APROBADAS",
-          "validated_locally": false,
-          "requires_preparation_review": true,
-          "notes": "Consenso de concentración, no aprobación de protocolo."
-        },
-        {
-          "source_id": "ES_DELPHI_2024",
-          "cohort": "neonatologia",
-          "values": [
-            20,
-            40,
-            60
-          ],
-          "unit": "µg/mL",
-          "source_locator": "Tabla 2 (columna Neonatology)",
-          "classification": "CONCENTRACIONES_PUBLICADAS_NO_APROBADAS",
-          "validated_locally": false,
-          "requires_preparation_review": true,
-          "notes": "Consenso neonatal, no autorización por peso, vía, preparación ni bomba."
-        },
         {
           "source_id": "ASHP_S4S_2026",
           "cohort": "pediatria_sin_desglose_neonatal",
@@ -276,7 +245,7 @@
       "code": "P04",
       "scope": "Todos",
       "field": "bandas_neonatales",
-      "requirement": "NPPG/RCPCH de noviembre 2024 extraído al archivo marco-neonatal-bandas-nppg.json. Pendiente: anexo suplementario completo del consenso español; bandas exactas, discrepancias regionales NHS y uso de milrinona <2 kg requieren revisión local.",
+      "requirement": "PENDIENTE: recuperar y cotejar directamente el PDF suplementario del consenso español para los cinco fármacos, incluidos los valores antes atribuidos a adrenalina. Mantener separadas las tablas NPPG/EoE.",
       "owner": "Equipo de investigación",
       "status": "PENDIENTE"
     },
@@ -312,5 +281,11 @@
       "owner": "Seguridad del Paciente",
       "status": "PENDIENTE"
     }
-  ]
+  ],
+  "spanish_consensus_status": "PENDIENTE_SUPLEMENTO_TODOS_CINCO",
+  "disputed_correction": {
+    "date": "2026-10-22",
+    "issue": "Las cifras de adrenalina mostradas anteriormente como consensuadas en la tabla principal no figuran en la tabla principal accesible; no se ha inspeccionado el anexo.",
+    "action": "Retiradas dos series atribuídas al consenso español de la matriz activa. Volver a introducir únicamente después de lectura directa del PDF suplementario y revisión independiente."
+  }
 }
