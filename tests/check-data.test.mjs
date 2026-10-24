@@ -27,16 +27,30 @@ test('cinco sustancias: identidad y unicidad coherentes', () => {
   assert.deepEqual(presentations.products.map(d=>d.id),ids);
 });
 
-test('consenso español: ninguno de los cinco fármacos tiene valores verificados del suplemento', () => {
-  for(const x of audit.coverage){
-    assert.equal(x.spanish_consensus_status,'PENDIENTE_SUPLEMENTO');
-    assert.deepEqual(x.population_rows,[]);
+test('consenso español: adrenalina verificada en tabla 2, cuatro pendientes',()=>{
+  assert.equal(matrix.spanish_consensus_status,'ADRENALINA_VERIFICADA_TABLA_2_RESTO_PENDIENTE_SUPLEMENTO');
+  const epi=audit.coverage.find(x=>x.drug_id==='adrenalina');
+  assert.equal(epi.spanish_consensus_status,'VERIFICADO_TABLA_PRINCIPAL');
+  assert.deepEqual(epi.population_rows.find(r=>r.population==='pediatria').values,[20,40,60,100]);
+  assert.deepEqual(epi.population_rows.find(r=>r.population==='neonatologia').values,[20,40,60]);
+  const sets=matrix.drugs.find(x=>x.id==='adrenalina').candidate_sets.filter(x=>x.source_id==='ES_DELPHI_2024');
+  assert.equal(sets.length,2);
+  assert.deepEqual(sets.find(x=>x.cohort==='pediatria').values,[20,40,60,100]);
+  assert.deepEqual(sets.find(x=>x.cohort==='neonatologia').values,[20,40,60]);
+  for(const row of sets){
+    assert.equal(row.validated_locally,false);
+    assert.equal(row.requires_preparation_review,true);
+    assert.match(row.source_locator,/Tabla 2/);
   }
-  assert.equal(matrix.spanish_consensus_status,'PENDIENTE_SUPLEMENTO_TODOS_CINCO');
-  for(const d of matrix.drugs) assert.ok(!d.candidate_sets.some(x=>x.source_id==='ES_DELPHI_2024'));
+  for(const id of ['noradrenalina','dopamina','dobutamina','milrinona']){
+    const entry=audit.coverage.find(x=>x.drug_id===id);
+    assert.equal(entry.spanish_consensus_status,'PENDIENTE_SUPLEMENTO');
+    assert.deepEqual(entry.population_rows,[]);
+    assert.equal(matrix.drugs.find(d=>d.id===id).candidate_sets.some(s=>s.source_id==='ES_DELPHI_2024'),false);
+  }
   assert.equal(audit.spanish_consensus.inaccessible_attachment.access,'NO_RECUPERADO_EN_LA_REVISION');
-  assert.ok(audit.verification_correction && audit.verification_correction.resolved_clinically===false);
-  assert.ok(matrix.disputed_correction && matrix.disputed_correction.action.includes('Retiradas'));
+  assert.equal(audit.verification_correction.resolved_clinically,false);
+  assert.equal(matrix.disputed_correction.clinical_validation,false);
 });
 
 test('el nombre de fichero del suplemento pendiente se conserva',()=>{
@@ -72,11 +86,11 @@ test('las opciones regionales tienen equivalencia aritmética correcta',()=>{
  }
 });
 
-test('JavaScript de la interfaz sintácticamente válido y visible v0.8',()=>{
+test('JavaScript de la interfaz sintácticamente válido y visible v0.9',()=>{
  const script=html.match(/<script>([\s\S]*?)<\/script>/);
  assert.ok(script);
  assert.doesNotThrow(()=>new vm.Script(script[1]));
- assert.match(html,/v0\.8/);
+ assert.match(html,/v0\.9/);
  assert.match(html,/id="productDetails"/);
  assert.match(html,/function isProductFTSafe/);
  assert.match(html,/id="auditDetails"/);
@@ -146,6 +160,6 @@ test('no equiparar tiempo fisicoquímico a validez microbiológica ni compatibil
 });
 
 test('service worker incorpora auditoría y versión',()=>{
- assert.match(sw,/perfusiones-simulador-v08/);
+ assert.match(sw,/perfusiones-simulador-v09/);
  for(const item of ['biblioteca-farmacos.json','matriz-concentraciones-publicadas.json','marco-neonatal-bandas-nppg.json','auditoria-fuentes.json','matriz-presentaciones-aemps.json']) assert.ok(sw.includes(item),item);
 });
