@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "version": "0.10.0",
+  "updated": "2026-10-24",
+  "facility": {
+    "name": "Hospital Universitario Rey Juan Carlos (HURJC)",
+    "location": "Móstoles, Madrid, España",
+    "facility_identity_status": "CONTEXTO_DE_TRABAJO_PENDIENTE_CONFIRMACION_EN_DOCUMENTO_LOCAL"
+  },
+  "inventory_status": "DATOS_DECLARADOS_POR_USUARIO_SIN_CONTRASTE_FARMACIA",
+  "clinical_use_allowed": false,
+  "preparation_selection_enabled": false,
+  "inventory_note": "Solo transcripción de concentraciones nominales y formatos comunicados por el responsable de Pediatría. NO verifican principio activo expresado como base o sal, fabricante, composición, volumen extraíble ni autorización para diluir, administrar o seleccionar una concentración clínica.",
+  "data_source": {
+    "type": "USER_REPORTED_LOCAL_FORMULARY",
+    "who": "Responsable de Pediatría",
+    "date": "2026-10-24",
+    "verification": "PENDIENTE_FARMACIA_HOSPITALARIA_Y_ETIQUETA_FISICA"
+  },
+  "entries": [
+    {
+      "drug_id": "adrenalina",
+      "display_name": "Adrenalina",
+      "reported_text": "Adrenalina 1 mg/1 ml ampollas",
+      "inventory_state": "PRESENTACION_COMUNICADA",
+      "label_strength": {
+        "numerator": 1,
+        "unit": "mg",
+        "volume_ml": 1
+      },
+      "nominal_concentration": {
+        "value": 1,
+        "unit": "mg/mL",
+        "display": "1 mg/mL",
+        "derived_from_label": true
+      },
+      "container": "ampolla",
+      "intravenous_label": "NO_DECLARADO",
+      "manufacturer": null,
+      "marketing_authorization_number": null,
+      "active_moiety_expression": "NO_COMPROBADA",
+      "salt_or_base_expression": "NO_COMPROBADA",
+      "pharmacy_confirmed": false,
+      "ready_to_use": false,
+      "clinical_preparations": []
+    },
+    {
+      "drug_id": "noradrenalina",
+      "display_name": "Noradrenalina",
+      "reported_text": null,
+      "inventory_state": "PENDIENTE_INFORMACION",
+      "label_strength": null,
+      "nominal_concentration": null,
+      "container": null,
+      "intravenous_label": "NO_DECLARADO",
+      "manufacturer": null,
+      "marketing_authorization_number": null,
+      "active_moiety_expression": "NO_COMPROBADA",
+      "salt_or_base_expression": "NO_COMPROBADA",
+      "pharmacy_confirmed": false,
+      "ready_to_use": false,
+      "clinical_preparations": []
+    },
+    {
+      "drug_id": "dopamina",
+      "display_name": "Dopamina",
+      "reported_text": "Dopamina 200 mg/5 ml amp IV",
+      "inventory_state": "PRESENTACION_COMUNICADA",
+      "label_strength": {
+        "numerator": 200,
+        "unit": "mg",
+        "volume_ml": 5
+      },
+      "nominal_concentration": {
+        "value": 40,
+        "unit": "mg/mL",
+        "display": "40 mg/mL",
+        "derived_from_label": true
+      },
+      "container": "ampolla",
+      "intravenous_label": "IV_DECLARADO",
+      "manufacturer": null,
+      "marketing_authorization_number": null,
+      "active_moiety_expression": "NO_COMPROBADA",
+      "salt_or_base_expression": "NO_COMPROBADA",
+      "pharmacy_confirmed": false,
+      "ready_to_use": false,
+      "clinical_preparations": []
+    },
+    {
+      "drug_id": "dobutamina",
+      "display_name": "Dobutamina",
+      "reported_text": "Dobutamina 250 mg/20 ml IV",
+      "inventory_state": "PRESENTACION_COMUNICADA",
+      "label_strength": {
+        "numerator": 250,
+        "unit": "mg",
+        "volume_ml": 20
+      },
+      "nominal_concentration": {
+        "value": 12.5,
+        "unit": "mg/mL",
+        "display": "12,5 mg/mL",
+        "derived_from_label": true
+      },
+      "container": "TIPO_NO_ESPECIFICADO",
+      "intravenous_label": "IV_DECLARADO",
+      "manufacturer": null,
+      "marketing_authorization_number": null,
+      "active_moiety_expression": "NO_COMPROBADA",
+      "salt_or_base_expression": "NO_COMPROBADA",
+      "pharmacy_confirmed": false,
+      "ready_to_use": false,
+      "clinical_preparations": []
+    },
+    {
+      "drug_id": "milrinona",
+      "display_name": "Milrinona",
+      "reported_text": null,
+      "inventory_state": "PENDIENTE_INFORMACION",
+      "label_strength": null,
+      "nominal_concentration": null,
+      "container": null,
+      "intravenous_label": "NO_DECLARADO",
+      "manufacturer": null,
+      "marketing_authorization_number": null,
+      "active_moiety_expression": "NO_COMPROBADA",
+      "salt_or_base_expression": "NO_COMPROBADA",
+      "pharmacy_confirmed": false,
+      "ready_to_use": false,
+      "clinical_preparations": []
+    }
+  ],
+  "validation_steps": [
+    "Confirmar etiqueta comercial, fabricante, código nacional y forma química (base/sal) por Farmacia Hospitalaria",
+    "Confirmar formato: ampolla o vial y volumen nominal/extraíble",
+    "Confirmar medicamentos efectivamente disponibles en el hospital, no confundir PENDIENTE_INFORMACION con ausencia de existencias",
+    "Evaluar ficha técnica del producto EXACTO usado en el hospital",
+    "Validar por separado diluyentes, concentración estándar, compatibilidad, estabilidad y vía por edad y peso",
+    "Obtener aprobación institucional y trazabilidad antes de habilitar ninguna preparación"
+  ]
+}
