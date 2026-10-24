@@ -1,8 +1,26 @@
-# Perfusiones Pediátricas — v0.9
+# Perfusiones Pediátricas — v0.10
 
 [**Abrir simulador documental**](https://gonzaloares.github.io/perfusiones-pediatricas/)
 
 > ⚠️ **NO APTO PARA USO CLÍNICO.** No utilizar para prescripción, preparación, programación de bomba ni administración de medicamentos a pacientes. Herramienta de investigación y simulación matemática con parámetros ficticios.
+
+## Novedad v0.10 — Inventario comunicado del Hospital Universitario Rey Juan Carlos (HURJC)
+
+Se ha recibido del responsable de Pediatría la siguiente información sobre presentaciones del hospital, **no contrastada todavía con las etiquetas reales ni por Farmacia Hospitalaria**:
+
+| Medicamento | Cantidad por envase indicada | Concentración nominal sin diluir | Tipo de envase comunicado |
+|---|---|---|---|
+| Adrenalina | 1 mg / 1 mL | 1 mg/mL | Ampolla |
+| Dopamina | 200 mg / 5 mL | 40 mg/mL | Ampolla IV |
+| Dobutamina | 250 mg / 20 mL | 12,5 mg/mL | Se ha indicado IV; tipo ampolla/vial no especificado |
+| Noradrenalina | Pendiente de comunicar | No calculada | No implica que falte en el hospital |
+| Milrinona | Pendiente de comunicar | No calculada | No implica que falte en el hospital |
+
+**Origen:** comunicación del usuario del 24 de octubre de 2026. **La presentación comercial, marca, composición sal/base, códigos nacionales, concentración química exacta y existencias deben ser verificadas por Farmacia Hospitalaria antes de cualquier uso asistencial.** El formato de dobutamina no se ha dado por supuesto.
+
+El nuevo `inventario-hurjc.json` se guarda **separado** de las fichas AEMPS de referencia. De esta forma no se presupone, por similitud nominal, que la ampolla del hospital sea del fabricante Basi, Grifols o Hikma. La interfaz muestra las concentraciones originales del envase y no copia ningún valor a los campos de dosis/velocidad.
+
+La página añade **«Presentaciones comunicadas · HURJC»** debajo del simulador matemático. No activa preparación, diluyente, vencimiento microbiológico, vía de acceso ni selección automática.
 
 ## Novedad v0.9 — Rectificación fundamentada en la tabla 2 del artículo original
 
@@ -72,6 +90,7 @@ Se ha añadido una consulta **documental** por bandas de peso de la publicación
 | `matriz-concentraciones-publicadas.json` | Consenso español, ASHP y observaciones de 9 UCIN | Bloqueado |
 | `marco-neonatal-bandas-nppg.json` | **18 filas NPPG por peso** y **18 opciones EoE** para 5 fármacos | Bloqueado |
 | `auditoria-fuentes.json` | Estado comprobación del consenso español y alertas AEMPS | Bloqueado |
+| `inventario-hurjc.json` | Tres presentaciones comunicadas por Pediatría, dos pendientes de información; sin verificación de Farmacia | Bloqueado |
 | `matriz-presentaciones-aemps.json` | Diluyentes, vía y estabilidad por producto comercial español | Bloqueado |
 | `index.html` | Selector documental y simulador matemático independiente | Solo demostración |
 | `sw.js` | Caché de consulta offline (con carga previa correcta) | No implica uso clínico |
