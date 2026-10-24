@@ -22,6 +22,10 @@ La tabla etiqueta adrenalina como **medicamento de alto riesgo y vesicante**. El
 
 Se actualizan `auditoria-fuentes.json`, `matriz-concentraciones-publicadas.json`, la visualización de la aplicación y los tests de regresión, manteniendo `clinical_use_allowed: false` y **cero preparaciones aprobadas**.
 
+### Preparación de validación institucional
+
+Se ha incorporado la [plantilla de revisión de Farmacia Hospitalaria y equipos clínicos](docs/plantilla-validacion-farmacia.md), con lista de comprobación por presentación, diluyente, vía, estabilidad, bomba y riesgos. **No se considera una aprobación por el hecho de estar en GitHub.**
+
 ### Trazabilidad de correcciones
 - v0.7: adrenalina figuraba como verificada por tabla 2, correctamente.
 - v0.8: se retiró por una interpretación equivocada de la tabla accesible.
