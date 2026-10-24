@@ -9,12 +9,13 @@ const matrix = read('matriz-concentraciones-publicadas.json');
 const uk = read('marco-neonatal-bandas-nppg.json');
 const audit = read('auditoria-fuentes.json');
 const presentations = read('matriz-presentaciones-aemps.json');
+const hospital = read('inventario-hurjc.json');
 const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const sw = fs.readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
 const ids = ['adrenalina','noradrenalina','dopamina','dobutamina','milrinona'];
 
 test('ningún conjunto documental autoriza uso clínico', () => {
-  for (const data of [pharmacy,matrix,uk,audit,presentations]) assert.equal(data.clinical_use_allowed,false);
+  for (const data of [pharmacy,matrix,uk,audit,presentations,hospital]) assert.equal(data.clinical_use_allowed,false);
   assert.ok(pharmacy.drugs.every(d => d.validation === 'PENDIENTE' && Array.isArray(d.preparations) && d.preparations.length===0));
   assert.deepEqual(uk.local_validation.approved_preparations, []);
   assert.deepEqual(uk.local_validation.approved_concentrations, []);
@@ -25,6 +26,7 @@ test('cinco sustancias: identidad y unicidad coherentes', () => {
   for (const data of [pharmacy,matrix,uk]) assert.deepEqual(data.drugs.map(d=>d.id),ids);
   assert.deepEqual(audit.coverage.map(d=>d.drug_id),ids);
   assert.deepEqual(presentations.products.map(d=>d.id),ids);
+  assert.deepEqual(hospital.entries.map(d=>d.drug_id),ids);
 });
 
 test('consenso español: adrenalina verificada en tabla 2, cuatro pendientes',()=>{
@@ -86,11 +88,13 @@ test('las opciones regionales tienen equivalencia aritmética correcta',()=>{
  }
 });
 
-test('JavaScript de la interfaz sintácticamente válido y visible v0.9',()=>{
+test('JavaScript de la interfaz sintácticamente válido y visible v0.10',()=>{
  const script=html.match(/<script>([\s\S]*?)<\/script>/);
  assert.ok(script);
  assert.doesNotThrow(()=>new vm.Script(script[1]));
- assert.match(html,/v0\.9/);
+ assert.match(html,/v0\.10/);
+ assert.match(html,/id="localStockCard"/);
+ assert.match(html,/function localStockIsSafe/);
  assert.match(html,/id="productDetails"/);
  assert.match(html,/function isProductFTSafe/);
  assert.match(html,/id="auditDetails"/);
@@ -159,7 +163,48 @@ test('no equiparar tiempo fisicoquímico a validez microbiológica ni compatibil
  assert.equal(epi.validation.status,'REFERENCIA_NO_PERFUSION_CONTINUA');
 });
 
+test('inventario HURJC: solo tres presentaciones declaradas y ninguna aprobada',()=>{
+ assert.equal(hospital.inventory_status,'DATOS_DECLARADOS_POR_USUARIO_SIN_CONTRASTE_FARMACIA');
+ assert.equal(hospital.clinical_use_allowed,false);
+ assert.equal(hospital.preparation_selection_enabled,false);
+ assert.equal(hospital.entries.length,5);
+ const announced=hospital.entries.filter(d=>d.inventory_state==='PRESENTACION_COMUNICADA');
+ assert.equal(announced.length,3);
+ assert.deepEqual(announced.map(d=>d.drug_id),['adrenalina','dopamina','dobutamina']);
+ for(const e of hospital.entries){
+  assert.equal(e.pharmacy_confirmed,false);
+  assert.equal(e.ready_to_use,false);
+  assert.deepEqual(e.clinical_preparations,[]);
+  assert.equal(e.manufacturer,null);
+  assert.equal(e.salt_or_base_expression,'NO_COMPROBADA');
+ }
+ assert.equal(hospital.entries.find(d=>d.drug_id==='noradrenalina').inventory_state,'PENDIENTE_INFORMACION');
+ assert.equal(hospital.entries.find(d=>d.drug_id==='milrinona').inventory_state,'PENDIENTE_INFORMACION');
+});
+
+test('concentraciones nominales calculadas a partir de envase, no son concentraciones de perfusión',()=>{
+ const nominal={adrenalina:[1,1,1],dopamina:[200,5,40],dobutamina:[250,20,12.5]};
+ for(const [drug,values] of Object.entries(nominal)){
+  const e=hospital.entries.find(d=>d.drug_id===drug);
+  assert.deepEqual([e.label_strength.numerator,e.label_strength.volume_ml,e.nominal_concentration.value],values);
+  assert.equal(e.label_strength.numerator/e.label_strength.volume_ml,e.nominal_concentration.value);
+  assert.equal(e.nominal_concentration.unit,'mg/mL');
+ }
+ assert.equal(hospital.entries.find(d=>d.drug_id==='dobutamina').container,'TIPO_NO_ESPECIFICADO');
+});
+
+test('inventario no se transfiere al cálculo ni modifica la selección farmacológica',()=>{
+ const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
+ const start=script.indexOf('let localStock=null;'),end=script.indexOf('const units=',start);
+ assert.ok(start>0&&end>start);
+ const segment=script.slice(start,end);
+ assert.ok(!segment.includes("$('conc').value"));
+ assert.ok(!segment.includes("$('val').value"));
+ assert.ok(!segment.includes('compute('));
+ assert.match(html,/concentraciones originales del envase/);
+});
+
 test('service worker incorpora auditoría y versión',()=>{
- assert.match(sw,/perfusiones-simulador-v09/);
- for(const item of ['biblioteca-farmacos.json','matriz-concentraciones-publicadas.json','marco-neonatal-bandas-nppg.json','auditoria-fuentes.json','matriz-presentaciones-aemps.json']) assert.ok(sw.includes(item),item);
+ assert.match(sw,/perfusiones-simulador-v010/);
+ for(const item of ['biblioteca-farmacos.json','matriz-concentraciones-publicadas.json','marco-neonatal-bandas-nppg.json','auditoria-fuentes.json','matriz-presentaciones-aemps.json','inventario-hurjc.json']) assert.ok(sw.includes(item),item);
 });
