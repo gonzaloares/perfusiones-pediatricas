@@ -1,12 +1,36 @@
-# Perfusiones Pediátricas — v0.8
+# Perfusiones Pediátricas — v0.9
 
 [**Abrir simulador documental**](https://gonzaloares.github.io/perfusiones-pediatricas/)
 
 > ⚠️ **NO APTO PARA USO CLÍNICO.** No utilizar para prescripción, preparación, programación de bomba ni administración de medicamentos a pacientes. Herramienta de investigación y simulación matemática con parámetros ficticios.
 
-## Novedad v0.8 — Verificación farmacotécnica y rectificación documentada
+## Novedad v0.9 — Rectificación fundamentada en la tabla 2 del artículo original
 
-**CORRECCIÓN DE LA VERSIÓN ANTERIOR:** la publicación principal de Taladriz-Sender y colaboradores (Eur J Hosp Pharm, 2024) muestra en la tabla 2 un extracto de la lista y remite el resto al fichero `ejhpharm-2022-003316supp001.pdf`, que no hemos logrado recuperar por la vía disponible. En v0.7 se adjudicaron erróneamente concentraciones de adrenalina a la tabla principal. **Se han retirado esas concentraciones atribuidas al consenso español de la matriz activa y ahora los cinco fármacos aparecen PENDIENTES del anexo.** Esto no significa que sus concentraciones sean incorrectas; significa que no se ha verificado la fuente exacta. No rellenarlas desde ASHP, NPPG o rangos observacionales.
+**La rectificación de v0.8 era errónea.** El artículo completo de Taladriz-Sender et al. (European Journal of Hospital Pharmacy, 2024), accesible en [PMC11042264](https://pmc.ncbi.nlm.nih.gov/articles/PMC11042264/), sí incluye **adrenalina (Adrenalin bitartrate)** en su **tabla 2**, sección de perfusión continua:
+
+| Medicamento | Pediatría: concentraciones consensuadas | Neonatología: concentraciones consensuadas | Estado |
+|---|---|---|---|
+| Adrenalina | 20, 40, 60, 100 µg/mL | 20, 40, 60 µg/mL | **Verificado directamente en tabla 2 del artículo principal; no validado para uso clínico** |
+| Noradrenalina | Sin verificar | Sin verificar | Anexo suplementario pendiente |
+| Dopamina | Sin verificar | Sin verificar | Anexo suplementario pendiente |
+| Dobutamina | Sin verificar | Sin verificar | Anexo suplementario pendiente |
+| Milrinona | Sin verificar | Sin verificar | Anexo suplementario pendiente |
+
+La tabla etiqueta adrenalina como **medicamento de alto riesgo y vesicante**. El consenso por método Delphi **no ha sido validado en la práctica asistencial**, según sus autores. La bibliografía no equivale a una aprobación hospitalaria ni constituye una instrucción de mezcla o administración.
+
+**El anexo original sigue pendiente:** `ejhpharm-2022-003316supp001.pdf` (referenciado en la publicación; no recuperado desde las vías de acceso actuales). No se rellenan las cuatro filas faltantes con valores internacionales.
+
+Se actualizan `auditoria-fuentes.json`, `matriz-concentraciones-publicadas.json`, la visualización de la aplicación y los tests de regresión, manteniendo `clinical_use_allowed: false` y **cero preparaciones aprobadas**.
+
+### Trazabilidad de correcciones
+- v0.7: adrenalina figuraba como verificada por tabla 2, correctamente.
+- v0.8: se retiró por una interpretación equivocada de la tabla accesible.
+- v0.9: se restaura con **la fila exacta del artículo original** y se mantiene la distinción entre *verificación bibliográfica* y *validación clínica*.
+
+## Histórico v0.8 — Verificación farmacotécnica (ver rectificación v0.9)
+
+
+**Nota histórica:** la afirmación de v0.8 sobre ausencia de adrenalina en la tabla principal resultó incorrecta; consultar la rectificación de v0.9 anterior. El anexo permanece pendiente para los otros cuatro fármacos.
 
 - **Nuevo fichero `matriz-presentaciones-aemps.json`:** 5 presentaciones comerciales específicas, concentración del envase original, diluyentes enumerados en su ficha CIMA, condiciones fisicoquímicas y microbiológicas diferenciadas, observaciones sobre vía IV y advertencias de incompatibilidad.
 - **Dos alertas bloqueantes:** Noradrenalina (base vs. tartrato, AEMPS MUH 10/2022) y Dopamina Grifols (población pediátrica no recomendada en la ficha de esa presentación).
@@ -63,7 +87,7 @@ Los conjuntos documentales contienen `clinical_use_allowed: false` y **cero prep
 
 ## Pendientes priorizados
 
-1. Recuperar y cotejar directamente el PDF suplementario original del consenso español para **los cinco fármacos**; sin ello ninguna concentración española se clasificará como verificada.
+1. Recuperar y cotejar el PDF suplementario original del consenso español para **noradrenalina, dopamina, dobutamina y milrinona**. Adrenalina ya ha sido contrastada en la tabla 2 del artículo principal; ninguna concentración está validada clínicamente.
 2. Resolver explícitamente el caso de **milrinona en RN <2 kg** sin suponer que una opción de la guía regional equivale a una recomendación nacional.
 3. Evaluar diferencias NPPG/EoE y adaptar únicamente los estándares aprobados por Farmacia Hospitalaria y Neonatología.
 4. Verificar concentraciones base/sal, formulaciones comercializadas, diluyentes, acceso vascular, compatibilidades y estabilidad para cada preparación.
@@ -72,4 +96,4 @@ Los conjuntos documentales contienen `clinical_use_allowed: false` y **cero prep
 
 [**Seguimiento de validación (incidencia bloqueante #1)**](https://github.com/gonzaloares/perfusiones-pediatricas/issues/1)
 
-**Fecha de esta revisión documental:** 22 de octubre de 2026.
+**Fecha de esta revisión documental:** 24 de octubre de 2026.
