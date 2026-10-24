@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "0.8.0",
-  "updated": "2026-10-22",
+  "version": "0.9.0",
+  "updated": "2026-10-24",
   "status": "INVESTIGACION_DOCUMENTAL_NO_VALIDADA",
   "clinical_use_allowed": false,
   "unit_note": "Concentración del envase original ≠ concentración de perfusión. Las cifras citadas en ficha técnica no son preparaciones aprobadas por esta app.",
@@ -32,7 +32,7 @@
       "vascular_access_documentation": "La FT prohíbe administrar por vía IV la solución de 1 mg/ml sin diluir.",
       "incompatibilities_documented": "No mezclar con otros medicamentos fuera de los indicados en la sección 6.6.",
       "stability_documented": "Tras dilución: uso inmediato según esta ficha técnica.",
-      "critical_note": "FT Basi orientada a anafilaxia/RCP, no establece un protocolo de perfusión continua; los datos del consenso español antes atribuidos a tabla 2 han sido retirados hasta cotejar suplemento.",
+      "critical_note": "La FT española describe anafilaxia y reanimación; no incluye un protocolo de perfusión continua. El consenso español sí publica concentraciones para perfusión de adrenalina (tabla 2), pero no valida su preparación ni su uso clínico para esta formulación concreta.",
       "published_preparations_not_approved": [],
       "source": {
         "title": "AEMPS · Adrenalina Basi 1 mg/ml",
