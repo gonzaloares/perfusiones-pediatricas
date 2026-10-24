@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "version": "0.8.0",
-  "reviewed_on": "2026-10-22",
+  "version": "0.9.0",
+  "reviewed_on": "2026-10-24",
   "clinical_use_allowed": false,
   "source_data_only": true,
   "status": "MATRIZ_DE_EVIDENCIA_SIN_APROBACION_CLINICA",
@@ -15,8 +15,8 @@
       "id": "ES_DELPHI_2024",
       "label": "Consenso multicéntrico español (Delphi), Eur J Hosp Pharm 2024",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11042264/",
-      "location": "Artículo principal, tabla 2 (extracto inicial), y fichero suplementario ejhpharm-2022-003316supp001.pdf citado como continuación: concentraciones de los cinco vasoactivos NO VERIFICADAS en origen.",
-      "type": "CONSENSO_REFERENCIA_SUPLEMENTO_PENDIENTE"
+      "location": "Tabla 2, fila Adrenalin bitartrate: adrenalina (20/40/60/100 µg/mL pediatría; 20/40/60 µg/mL neonatología). Resto de los cuatro vasoactivos: anexo suplementario pendiente.",
+      "type": "CONSENSO_PUB_TABLA_PRINCIPAL_VERIFICADA_PARCIAL"
     },
     {
       "id": "ASHP_S4S_2026",
@@ -45,6 +45,39 @@
       "id": "adrenalina",
       "name": "Adrenalina (epinefrina)",
       "candidate_sets": [
+        {
+          "source_id": "ES_DELPHI_2024",
+          "cohort": "pediatria",
+          "values": [
+            20,
+            40,
+            60,
+            100
+          ],
+          "unit": "µg/mL",
+          "source_locator": "Tabla 2, fila Adrenalin bitartrate, artículo principal PMC11042264",
+          "classification": "CONCENTRACIONES_PUBLICADAS_NO_APROBADAS",
+          "validated_locally": false,
+          "requires_preparation_review": true,
+          "verification_status": "VERIFICADO_TEXTO_PRINCIPAL_NO_VALIDADO_LOCALMENTE",
+          "notes": "Tabla 2 del artículo completo; consenso Delphi español. No protocolo local, no preparación ni concentración para seleccionar en la calculadora."
+        },
+        {
+          "source_id": "ES_DELPHI_2024",
+          "cohort": "neonatologia",
+          "values": [
+            20,
+            40,
+            60
+          ],
+          "unit": "µg/mL",
+          "source_locator": "Tabla 2, fila Adrenalin bitartrate, artículo principal PMC11042264",
+          "classification": "CONCENTRACIONES_PUBLICADAS_NO_APROBADAS",
+          "validated_locally": false,
+          "requires_preparation_review": true,
+          "verification_status": "VERIFICADO_TEXTO_PRINCIPAL_NO_VALIDADO_LOCALMENTE",
+          "notes": "Tabla 2 del artículo completo; consenso Delphi español. No protocolo local, no preparación ni concentración para seleccionar en la calculadora."
+        },
         {
           "source_id": "ASHP_S4S_2026",
           "cohort": "pediatria_sin_desglose_neonatal",
@@ -245,7 +278,7 @@
       "code": "P04",
       "scope": "Todos",
       "field": "bandas_neonatales",
-      "requirement": "PENDIENTE: recuperar y cotejar directamente el PDF suplementario del consenso español para los cinco fármacos, incluidos los valores antes atribuidos a adrenalina. Mantener separadas las tablas NPPG/EoE.",
+      "requirement": "Tabla principal 2: adrenalina cotejada. PENDIENTE: suplemento original para noradrenalina, dopamina, dobutamina y milrinona; sin inferir desde fuentes externas.",
       "owner": "Equipo de investigación",
       "status": "PENDIENTE"
     },
@@ -282,10 +315,12 @@
       "status": "PENDIENTE"
     }
   ],
-  "spanish_consensus_status": "PENDIENTE_SUPLEMENTO_TODOS_CINCO",
+  "spanish_consensus_status": "ADRENALINA_VERIFICADA_TABLA_2_RESTO_PENDIENTE_SUPLEMENTO",
   "disputed_correction": {
-    "date": "2026-10-22",
-    "issue": "Las cifras de adrenalina mostradas anteriormente como consensuadas en la tabla principal no figuran en la tabla principal accesible; no se ha inspeccionado el anexo.",
-    "action": "Retiradas dos series atribuídas al consenso español de la matriz activa. Volver a introducir únicamente después de lectura directa del PDF suplementario y revisión independiente."
+    "date": "2026-10-24",
+    "issue": "La rectificación de v0.8 fue incorrecta: el artículo completo en PMC muestra adrenalina en su tabla 2.",
+    "action": "Restituir dos series de adrenalina, con valores de la tabla 2 verificados. Solo noradrenalina, dopamina, dobutamina y milrinona siguen pendientes de lectura del suplemento.",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11042264/",
+    "clinical_validation": false
   }
 }
